@@ -16,6 +16,7 @@ export class ResumesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.personRegistryService.getCards();
   }
 
   openAddCardModal(): void {

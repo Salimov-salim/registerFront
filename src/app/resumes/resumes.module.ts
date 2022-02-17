@@ -13,6 +13,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
+import { ResumeTableComponent } from './resume-table/resume-table.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import {MatInputModule} from "@angular/material/input";
     ResumesComponent,
     ResumeItemComponent,
     ResumeModalComponent,
-    ResumeSearchComponent
+    ResumeSearchComponent,
+    ResumeTableComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import {MatInputModule} from "@angular/material/input";
     FormsModule,
     ReactiveFormsModule,
     MatProgressBarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTableModule
   ]
 })
 export class ResumesModule { }
