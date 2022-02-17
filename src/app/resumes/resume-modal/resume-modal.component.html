@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>{{ data ? 'Kartviziti Düzenle' : 'Yeni Kartvizit' }}</h2>
+<h2 mat-dialog-title>{{ data ? 'Edit' : 'Yeni Şəxs' }}</h2>
 <mat-dialog-content class="mat-typography">
   <div *ngIf="showSpinner">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
@@ -6,11 +6,11 @@
   </div>
   <form [formGroup]="personForm">
     <mat-form-field class="example-full-width">
-      <mat-label>Başlık</mat-label>
+      <mat-label>Başlıq</mat-label>
       <input matInput formControlName="title">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Ad Soyad veya Firma Adı</mat-label>
+      <mat-label>Ad,Soyad ve Ata Adı</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
     <mat-form-field class="example-full-width">
@@ -18,11 +18,11 @@
       <input matInput formControlName="phone">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>E-posta Adresi</mat-label>
+      <mat-label>E-poçt hesabı</mat-label>
       <input matInput formControlName="email">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Adres</mat-label>
+      <mat-label>Ünvanı</mat-label>
       <textarea matInput formControlName="address"></textarea>
     </mat-form-field>
   </form>
