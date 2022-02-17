@@ -1,0 +1,29 @@
+<main>
+  <div class="d-flex align-items-center">
+    <div class="flex-grow-1">
+      <h1 class="page-title">Bu ekranda CV-ləri idarə edə bilərsiniz.</h1>
+<!--      <p class="page-description">-->
+<!--        Bu ekranda CV-ləri idarə edə bilərsiniz.-->
+<!--      </p>-->
+    </div>
+<!--    <app-card-search></app-card-search>-->
+    <app-resume-search></app-resume-search>
+    <button mat-flat-button color="primary" style="margin-left: 16px" (click)="openAddCardModal()">Yeni Şəxs</button>
+  </div>
+  <hr>
+  <div class="cards">
+    <div class="row">
+      <div class="col-12" *ngIf="!personRegistryService.persons">
+        <span>Şəxlər haqqında məlumat yüklənir. Zəhmət olmasa gözləyin.</span>
+      </div>
+      <div class="col-12" *ngIf="personRegistryService.persons?.length === 0">
+        <span>Hazırda məlumat bazasında hec bir şəxs haqqında informasiya yoxdur. <a class="text-primary" (click)="openAddCardModal()">Buraya klikləyin</a> yeni şəxsi daxil edin.</span>
+      </div>
+      <div class="col-12 col-md-4 col-lg-3" *ngFor="let person of personRegistryService.filteredPersons">
+<!--        <app-card-item [card]="card"></app-card-item>-->
+
+        <app-resume-item [person]="person" ]></app-resume-item>
+      </div>
+    </div>
+  </div>
+</main>
