@@ -10,6 +10,7 @@ export class PersonRegistryService {
 
   persons!: Person[];
   filteredPersons!: Person[];
+  p!:Person;
 
 
   constructor(
@@ -35,4 +36,14 @@ export class PersonRegistryService {
   deleteCard(cardId: number): Observable<any> {
     return this.http.delete(this.apiUrl + '/cards/' + cardId);
   }
+
+
+  //
+  // getPerson(): void {
+  //   this.http.get<Person>('http://localhost:8085/persons/1')
+  //     .subscribe((res: Person) => {
+  //       return res;
+  //     });
+  // }
+
 }
