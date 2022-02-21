@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Person} from "../../models/person";
 import {MatDialog} from "@angular/material/dialog";
 import {ResumeModalComponent} from "../resume-modal/resume-modal.component";
+import {Ress} from "../../models/ress";
 
 @Component({
   selector: 'app-resume-item',
@@ -11,7 +12,7 @@ import {ResumeModalComponent} from "../resume-modal/resume-modal.component";
 export class ResumeItemComponent implements OnInit {
 
 
-  @Input() person!: Person;
+  @Input() person!: Ress;
 
   constructor(
     private dialog: MatDialog

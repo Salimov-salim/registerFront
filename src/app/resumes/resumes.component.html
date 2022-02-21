@@ -19,13 +19,15 @@
       <div class="col-12" *ngIf="personRegistryService.persons?.length === 0">
         <span>Hazırda məlumat bazasında hec bir şəxs haqqında informasiya yoxdur. <a class="text-primary" (click)="openAddCardModal()">Buraya klikləyin</a> yeni şəxsi daxil edin.</span>
       </div>
-      <app-resume-table ></app-resume-table>
-<!--      <div class="col-12 col-md-4 col-lg-3" *ngFor="let person of personRegistryService.filteredPersons">-->
-<!--&lt;!&ndash;        <app-card-item [card]="card"></app-card-item>&ndash;&gt;-->
+<!--      {{salim.subscribe()}}-->
+<!--      {{salim}}-->
+<!--        <app-resume-table ></app-resume-table>-->
+      <div class="col-12 col-md-4 col-lg-3" *ngFor="let person of personRegistryService.persons">
+<!--        <app-card-item []="card"></app-card-item>-->
 
 <!--        <app-resume-table ></app-resume-table>-->
-<!--&lt;!&ndash;        <app-resume-item [person]="person" ]></app-resume-item>&ndash;&gt;-->
-<!--      </div>-->
+<!--        <app-resume-item [person]="person"></app-resume-item>-->
+      </div>
     </div>
   </div>
 </main>

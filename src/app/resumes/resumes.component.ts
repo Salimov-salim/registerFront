@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {PersonRegistryService} from "../services/person-registry.service";
 import {ResumeModalComponent} from "./resume-modal/resume-modal.component";
+import {Ress} from "../models/ress";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-resumes',
@@ -9,6 +11,7 @@ import {ResumeModalComponent} from "./resume-modal/resume-modal.component";
   styleUrls: ['./resumes.component.scss']
 })
 export class ResumesComponent implements OnInit {
+  // salim!:Observable<Ress>;
 
   constructor(
     public dialog: MatDialog,
