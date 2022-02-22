@@ -11,7 +11,7 @@ export class PersonRegistryService {
 
   persons!: Person[];
   filteredPersons!: Person[];
-
+  responseForm!:Ress;
 
 
 
@@ -21,9 +21,10 @@ export class PersonRegistryService {
   ) { }
 
 
-  getCards(): void {
-    this.http.get<Ress>('http://localhost:8085/persons').subscribe((res:Ress)=>{
+  getPersons(): void {
+    this.http.get<Person[]>('http://localhost:8085/persons').subscribe((res:Person[])=>{
       console.log(res)
+      this.persons = res;
     })
 
   }

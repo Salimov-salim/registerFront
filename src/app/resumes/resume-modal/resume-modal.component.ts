@@ -12,8 +12,6 @@ import {Person} from "../../models/person";
   styleUrls: ['./resume-modal.component.scss']
 })
 export class ResumeModalComponent implements OnInit {
-
-
   personForm!: FormGroup;
   showSpinner: boolean = false;
 
@@ -70,7 +68,7 @@ export class ResumeModalComponent implements OnInit {
 
   getSuccess(message: string): void {
     this.snackbarService.createSnackbar('success', message);
-    this.cardService.getCards();
+    this.cardService.getPersons();
     this.showSpinner = false;
     this.dialogRef.close();
   }

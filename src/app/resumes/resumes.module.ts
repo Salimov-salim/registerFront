@@ -16,7 +16,6 @@ import {MatInputModule} from "@angular/material/input";
 import { ResumeTableComponent } from './resume-table/resume-table.component';
 import {MatTableModule} from '@angular/material/table';
 
-
 @NgModule({
   declarations: [
     ResumesComponent,
@@ -36,7 +35,10 @@ import {MatTableModule} from '@angular/material/table';
     ReactiveFormsModule,
     MatProgressBarModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+  //  ------
+
+
   ]
 })
 export class ResumesModule { }

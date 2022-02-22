@@ -12,7 +12,7 @@ import {Ress} from "../../models/ress";
 export class ResumeItemComponent implements OnInit {
 
 
-  @Input() person!: Ress;
+  @Input() person!: Person;
 
   constructor(
     private dialog: MatDialog

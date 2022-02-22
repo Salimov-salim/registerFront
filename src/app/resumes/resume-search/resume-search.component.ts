@@ -14,7 +14,9 @@ export class ResumeSearchComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   search(searchText: string): void {
+
     searchText = searchText.toLowerCase();
     this.personService.filteredPersons = this.personService.persons.filter((person) => {
       return person.name.toLowerCase().indexOf(searchText) > -1 || (person.name && person.name.toLowerCase().indexOf(searchText) > -1);

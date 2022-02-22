@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Person} from "../../models/person";
+import {ResumeModalComponent} from "../resume-modal/resume-modal.component";
+import {MatDialog} from "@angular/material/dialog";
 
 // export interface PeriodicElement {
 //   name: string;
@@ -26,12 +29,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resume-table.component.scss']
 })
 export class ResumeTableComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name','military', 'weight', 'symbol'];
-  // dataSource = ELEMENT_DATA;
-  dataSource=[{position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'}]
-  constructor() { }
+
+  @Input() persons!:Person[]
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openUpdateCardModal(person1: Person): void {
+    this.dialog.open(ResumeModalComponent, {
+      width: '400px',
+      data: person1
+    });
   }
 
 }

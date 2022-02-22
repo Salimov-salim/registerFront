@@ -19,7 +19,7 @@ export class ResumesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.personRegistryService.getCards();
+    this.personRegistryService.getPersons();
   }
 
   openAddCardModal(): void {
