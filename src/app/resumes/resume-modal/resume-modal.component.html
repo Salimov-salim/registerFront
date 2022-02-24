@@ -295,8 +295,29 @@
   <aw-wizard-step stepTitle="Elektron CV">
     <div class="row">
       <div class="col-sm-12">
-        <h5>Finished Title</h5>
 
+        <div style="margin-top: 50px" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+
+
+
+            <mat-progress-bar mode="determinate"></mat-progress-bar>
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>Elektron materiali daxil edin</mat-card-title>
+                <mat-card-subtitle>
+                  <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" ngModel/>
+                  <mat-form-field class="example-full-width" (click)="fileInput.click()">
+                    <input matInput placeholder="Choose File" value="{{fileInput.value.substr(fileInput.value.lastIndexOf('\\')+1)}}">
+                    <mat-icon matSuffix>folder_open</mat-icon>
+                  </mat-form-field>
+                  &nbsp;
+                  <button mat-raised-button color="primary" >Upload</button>
+                </mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+
+          &nbsp;&nbsp;
+        </div>
       </div>
       <div class="col-sm-12 centered-content">
         <div class="btn-group mt-10">

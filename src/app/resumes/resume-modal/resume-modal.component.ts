@@ -15,6 +15,33 @@ export class ResumeModalComponent implements OnInit {
   personForm!: FormGroup;
   showSpinner: boolean = false;
 
+  loaded = 0;
+  selectedFiles!: FileList;
+  currentFileUpload!: File;
+
+  selectFile(event:any) {
+    this.selectedFiles = event.target.files;
+  }
+
+  // Uploads the file to backend server.
+  // upload() {
+  //   this.currentFileUpload = this.selectedFiles.item(0);
+  //   this.fileService.uploadSingleFile(this.currentFileUpload)
+  //     .pipe(tap(event => {
+  //       if (event.type === HttpEventType.UploadProgress) {
+  //         this.loaded = Math.round(100 * event.loaded / event.total);
+  //       }
+  //     })).subscribe(event => {
+  //     if (event instanceof HttpResponse) {
+  //       this.snackBar.open('File uploaded successfully!', 'Close', {
+  //         duration: 3000
+  //       });
+  //       this.fileService.fetchFileNames();
+  //     }
+  //   });
+  // }
+
+
   constructor(
     private dialogRef: MatDialogRef<ResumeModalComponent>,
     private fb: FormBuilder,

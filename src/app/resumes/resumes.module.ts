@@ -16,6 +16,7 @@ import {MatInputModule} from "@angular/material/input";
 import { ResumeTableComponent } from './resume-table/resume-table.component';
 import {MatTableModule} from '@angular/material/table';
 import {ArchwizardModule} from 'angular-archwizard';
+import {MatIconModule} from "@angular/material/icon";
 @NgModule({
   declarations: [
     ResumesComponent,
@@ -36,8 +37,9 @@ import {ArchwizardModule} from 'angular-archwizard';
     MatProgressBarModule,
     MatFormFieldModule,
     MatTableModule,
-  //  ------
-    ArchwizardModule
+    //  ------
+    ArchwizardModule,
+    MatIconModule
 
 
   ]
