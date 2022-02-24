@@ -15,7 +15,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import { ResumeTableComponent } from './resume-table/resume-table.component';
 import {MatTableModule} from '@angular/material/table';
-
+import {ArchwizardModule} from 'angular-archwizard';
 @NgModule({
   declarations: [
     ResumesComponent,
@@ -37,8 +37,11 @@ import {MatTableModule} from '@angular/material/table';
     MatFormFieldModule,
     MatTableModule,
   //  ------
+    ArchwizardModule
 
 
   ]
 })
-export class ResumesModule { }
+export class ResumesModule {
+
+}

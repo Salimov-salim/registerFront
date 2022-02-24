@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {PersonRegistryService} from "../../services/person-registry.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -34,6 +34,17 @@ export class ResumeModalComponent implements OnInit {
       address: [this.data?.fin || '', Validators.maxLength(255)],
     });
   }
+
+  testForm = new FormGroup({
+    food: new FormControl('', Validators.required),
+    comment: new FormControl('', Validators.required),
+  });
+  personalForm = new FormGroup({
+    last_work: new FormControl('', Validators.required),
+    position: new FormControl('', Validators.required),
+  });
+
+
 
 
   addCard(): void {

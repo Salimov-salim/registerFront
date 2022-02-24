@@ -40,7 +40,8 @@ export class ResumeTableComponent implements OnInit {
 
   openUpdateCardModal(person1: Person): void {
     this.dialog.open(ResumeModalComponent, {
-      width: '400px',
+      width: '800px',
+      height:'500px',
       data: person1
     });
   }

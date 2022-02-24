@@ -38,83 +38,275 @@
 <!--  </div>-->
 <!--</mat-dialog-actions>-->
 
+<!--2ci hisse-->
 
-<app-card cardTitle="Left Nav Wizard" [options]="false">
-  <aw-wizard #wizard class="arc-wizard" navBarLocation="left">
-    <aw-wizard-step stepTitle="Profile">
-      <div class="row">
-        <div class="col-sm-12">
-          <h5>Profile Title</h5>
-          <hr>
-          <h6>Sub title 1</h6>
-          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's
-            standard dummy text.</p>
-          <h6 class="mt-3">Sub title 2</h6>
-          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-        </div>
-        <div class="col-sm-12 centered-content">
-          <div class="btn-group mt-10">
-            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>
+<!--<app-card cardTitle="Left Nav Wizard" [options]="false">-->
+<!--  <aw-wizard #wizard class="arc-wizard" navBarLocation="left">-->
+<!--    <aw-wizard-step stepTitle="Profile">-->
+<!--      <div class="row">-->
+<!--        <div class="col-sm-12">-->
+<!--          <h5>Profile Title</h5>-->
+<!--          <hr>-->
+<!--          <h6>Sub title 1</h6>-->
+<!--          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's-->
+<!--            standard dummy text.</p>-->
+<!--          <h6 class="mt-3">Sub title 2</h6>-->
+<!--          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>-->
+<!--        </div>-->
+<!--        <div class="col-sm-12 centered-content">-->
+<!--          <div class="btn-group mt-10">-->
+<!--            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </aw-wizard-step>-->
+<!--    <aw-wizard-step stepTitle="Work">-->
+<!--      <div class="row">-->
+<!--        <div class="col-sm-12">-->
+<!--          <h5>Work Title</h5>-->
+<!--          <hr>-->
+<!--          <h6>Sub title 1</h6>-->
+<!--          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's-->
+<!--            standard dummy text.</p>-->
+<!--          <h6 class="mt-3">Sub title 2</h6>-->
+<!--          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>-->
+<!--        </div>-->
+<!--        <div class="col-sm-12 centered-content">-->
+<!--          <div class="btn-group mt-10">-->
+<!--            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>-->
+<!--            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </aw-wizard-step>-->
+<!--    <aw-wizard-step stepTitle="Address">-->
+<!--      <div class="row">-->
+<!--        <div class="col-sm-12">-->
+<!--          <h5>Address Title</h5>-->
+<!--          <hr>-->
+<!--          <h6>Sub title 1</h6>-->
+<!--          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's-->
+<!--            standard dummy text.</p>-->
+<!--          <h6 class="mt-3">Sub title 2</h6>-->
+<!--          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>-->
+<!--        </div>-->
+<!--        <div class="col-sm-12 centered-content">-->
+<!--          <div class="btn-group mt-10">-->
+<!--            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>-->
+<!--            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </aw-wizard-step>-->
+<!--    <aw-wizard-step stepTitle="Finished">-->
+<!--      <div class="row">-->
+<!--        <div class="col-sm-12">-->
+<!--          <h5>Finished Title</h5>-->
+<!--          <hr>-->
+<!--          <h6>Sub title 1</h6>-->
+<!--          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's-->
+<!--            standard dummy text.</p>-->
+<!--          <h6 class="mt-3">Sub title 2</h6>-->
+<!--          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>-->
+<!--        </div>-->
+<!--        <div class="col-sm-12 centered-content">-->
+<!--          <div class="btn-group mt-10">-->
+<!--            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>-->
+<!--            <button type="button" class="btn btn-success btn-sm" awResetWizard>Finished</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </aw-wizard-step>-->
+<!--  </aw-wizard>-->
+<!--</app-card>-->
+
+
+<!--3cu hisse-->
+
+<!--<app-progress #progress (stateChange)="onStateChange($event)">-->
+<!--  <app-progress-step>-->
+<!--    <h1>Şəxs haqqında məlumatlar</h1>-->
+<!--    <p>-->
+<!--      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, velit-->
+<!--      eius expedita quis tempore suscipit minima repudiandae. Magnam tempore,-->
+<!--      nostrum facilis quas, cumque dicta eveniet vero, nisi cum ipsa eos.-->
+<!--    </p>-->
+<!--    <button mat-raised-button color="primary" (click)="goNext(progress)">-->
+<!--      next-->
+<!--    </button>-->
+<!--  </app-progress-step>-->
+
+<!--  <app-progress-step>-->
+<!--    <h1>step 2</h1>-->
+
+<!--    <form class="example-form" [formGroup]="testForm">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Favorite food</mat-label>-->
+<!--        <input-->
+<!--          formControlName="food"-->
+<!--          matInput-->
+<!--          placeholder="Ex. Pizza"-->
+<!--          value="Sushi"-->
+<!--        />-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <mat-label>Leave a comment</mat-label>-->
+<!--        <textarea-->
+<!--          matInput-->
+<!--          formControlName="comment"-->
+<!--          placeholder="Ex. It makes me feel..."-->
+<!--        ></textarea>-->
+<!--      </mat-form-field>-->
+<!--      <button progressStepPrev mat-raised-button color="accent">prev</button>-->
+<!--      <button-->
+<!--        style="margin-left: 10px"-->
+<!--        progressStepNext-->
+<!--        [disabled]="!testForm.valid"-->
+<!--        mat-raised-button-->
+<!--        color="primary"-->
+<!--      >-->
+<!--        next-->
+<!--      </button>-->
+<!--    </form>-->
+<!--  </app-progress-step>-->
+<!--  <app-progress-step>-->
+<!--    <h1>step 3</h1>-->
+<!--    <p>-->
+<!--      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda sint-->
+<!--      consectetur est quos voluptatem eveniet sed maxime exercitationem officia.-->
+<!--      Ipsa porro inventore earum commodi vero vel deleniti unde ad ipsam?-->
+<!--    </p>-->
+<!--    <button progressStepPrev mat-raised-button color="accent">prev</button>-->
+<!--    <button progressStepNext mat-raised-button color="primary">next</button>-->
+<!--  </app-progress-step>-->
+<!--  <app-progress-step>-->
+<!--    <h1>step 4</h1>-->
+<!--    <p>-->
+<!--      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda sint-->
+<!--      consectetur est quos voluptatem eveniet sed maxime exercitationem officia.-->
+<!--    </p>-->
+<!--    <button progressStepPrev mat-raised-button color="accent">prev</button>-->
+<!--    <button progressStepNext mat-raised-button color="primary">next</button>-->
+<!--  </app-progress-step>-->
+<!--</app-progress>-->
+
+
+<!--4 cu hisse-->
+<aw-wizard #wizard class="arc-wizard">
+  <aw-wizard-step stepTitle="Profil">
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-dialog-content class="mat-typography">
+          <div *ngIf="showSpinner">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            <br>
           </div>
+          <form [formGroup]="personForm">
+            <mat-form-field class="example-full-width">
+              <mat-label>Başlıq</mat-label>
+              <input matInput formControlName="title">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Ad,Soyad ve Ata Adı</mat-label>
+              <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Telefon</mat-label>
+              <input matInput formControlName="phone">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>E-poçt hesabı</mat-label>
+              <input matInput formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Ünvanı</mat-label>
+              <textarea matInput formControlName="address"></textarea>
+            </mat-form-field>
+          </form>
+        </mat-dialog-content>
+      </div>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
         </div>
       </div>
-    </aw-wizard-step>
-    <aw-wizard-step stepTitle="Work">
-      <div class="row">
-        <div class="col-sm-12">
-          <h5>Work Title</h5>
-          <hr>
-          <h6>Sub title 1</h6>
-          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's
-            standard dummy text.</p>
-          <h6 class="mt-3">Sub title 2</h6>
-          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+    </div>
+  </aw-wizard-step>
+  <aw-wizard-step stepTitle="Təhsil">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5>Work Title</h5>
         </div>
-        <div class="col-sm-12 centered-content">
-          <div class="btn-group mt-10">
-            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>
-            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>
-          </div>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
         </div>
       </div>
-    </aw-wizard-step>
-    <aw-wizard-step stepTitle="Address">
-      <div class="row">
-        <div class="col-sm-12">
-          <h5>Address Title</h5>
-          <hr>
-          <h6>Sub title 1</h6>
-          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's
-            standard dummy text.</p>
-          <h6 class="mt-3">Sub title 2</h6>
-          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-        </div>
-        <div class="col-sm-12 centered-content">
-          <div class="btn-group mt-10">
-            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>
-            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>
-          </div>
+    </div>
+  </aw-wizard-step>
+  <aw-wizard-step stepTitle="Ünvan">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5>Address Title</h5>
+         </div>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
         </div>
       </div>
-    </aw-wizard-step>
-    <aw-wizard-step stepTitle="Finished">
-      <div class="row">
-        <div class="col-sm-12">
-          <h5>Finished Title</h5>
-          <hr>
-          <h6>Sub title 1</h6>
-          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's
-            standard dummy text.</p>
-          <h6 class="mt-3">Sub title 2</h6>
-          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-        </div>
-        <div class="col-sm-12 centered-content">
-          <div class="btn-group mt-10">
-            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>
-            <button type="button" class="btn btn-success btn-sm" awResetWizard>Finished</button>
-          </div>
+    </div>
+  </aw-wizard-step>
+  <aw-wizard-step stepTitle="İş">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5>Finished Title</h5>
+
+      </div>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
         </div>
       </div>
-    </aw-wizard-step>
-  </aw-wizard>
-</app-card>
+    </div>
+  </aw-wizard-step>
+  <aw-wizard-step stepTitle="Elektron hesab">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5>Finished Title</h5>
+
+      </div>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
+        </div>
+      </div>
+    </div>
+  </aw-wizard-step>
+  <aw-wizard-step stepTitle="Elektron CV">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5>Finished Title</h5>
+
+      </div>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-success btn-sm" awResetWizard>Bitir</button>
+        </div>
+      </div>
+    </div>
+  </aw-wizard-step>
+</aw-wizard>
+
+

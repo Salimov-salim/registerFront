@@ -24,7 +24,8 @@ export class ResumesComponent implements OnInit {
 
   openAddCardModal(): void {
     this.dialog.open(ResumeModalComponent, {
-      width: '400px'
+      width: '1000px',
+      height:'800px'
     });
   }
 }
