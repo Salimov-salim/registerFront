@@ -17,6 +17,9 @@ import { ResumeTableComponent } from './resume-table/resume-table.component';
 import {MatTableModule} from '@angular/material/table';
 import {ArchwizardModule} from 'angular-archwizard';
 import {MatIconModule} from "@angular/material/icon";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     ResumesComponent,
@@ -39,7 +42,10 @@ import {MatIconModule} from "@angular/material/icon";
     MatTableModule,
     //  ------
     ArchwizardModule,
-    MatIconModule
+    MatIconModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatCheckboxModule
 
 
   ]

@@ -193,71 +193,212 @@
 
 
 <!--4 cu hisse-->
-<aw-wizard #wizard class="arc-wizard">
+<aw-wizard #wizard class="arc-wizard" style="alignment: center;margin-top: 30px">
   <aw-wizard-step stepTitle="Profil">
-    <div class="row">
+    <div class="row" >
       <div class="col-sm-12">
         <mat-dialog-content class="mat-typography">
           <div *ngIf="showSpinner">
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
             <br>
           </div>
-          <form [formGroup]="personForm">
-            <mat-form-field class="example-full-width">
-              <mat-label>Başlıq</mat-label>
-              <input matInput formControlName="title">
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>Ad,Soyad ve Ata Adı</mat-label>
+          <form [formGroup]="personForm" >
+<!--            <mat-form-field class="example-full-width">-->
+<!--              <mat-label>Başlıq</mat-label>-->
+<!--              <input matInput formControlName="title">-->
+<!--            </mat-form-field>-->
+            <mat-form-field appearance = "outline" class="example-full-width">
+              <mat-label>Ad </mat-label>
               <input matInput formControlName="name">
             </mat-form-field>
-            <mat-form-field class="example-full-width">
+            <mat-form-field  appearance = "outline" class="example-full-width">
+              <mat-label>Soyad</mat-label>
+              <input matInput formControlName="surname">
+            </mat-form-field>
+            <mat-form-field  appearance = "outline" class="example-full-width">
+              <mat-label>Ata Adı</mat-label>
+              <input matInput formControlName="fatherName">
+            </mat-form-field>
+            <mat-form-field appearance = "outline" class="example-full-width">
               <mat-label>Telefon</mat-label>
               <input matInput formControlName="phone">
             </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <mat-label>E-poçt hesabı</mat-label>
-              <input matInput formControlName="email">
+            <mat-form-field appearance = "outline" class="example-full-width">
+              <mat-label>Herbi mukellefiyyet</mat-label>
+              <input matInput formControlName="military">
             </mat-form-field>
-            <mat-form-field class="example-full-width">
+            <mat-form-field appearance = "outline" class="example-full-width" >
+              <mat-label>E-poçt hesabı</mat-label>
+              <input matInput placeholder="exam@example.com" [formControl]="email" formControlName="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance = "outline" class="example-full-width">
               <mat-label>Ünvanı</mat-label>
               <textarea matInput formControlName="address"></textarea>
             </mat-form-field>
           </form>
         </mat-dialog-content>
       </div>
-      <div class="col-sm-12 centered-content">
-        <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
-        </div>
+
+      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
+          <button *ngIf="data" type="button" class="btn btn-secondary btn-lg"  (click)="deleteCard()" [disabled]="showSpinner">Sil</button>
+          <button type="button" class="btn btn-secondary btn-lg" mat-dialog-close >Imtina</button>
+          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
       </div>
     </div>
   </aw-wizard-step>
   <aw-wizard-step stepTitle="Təhsil">
-    <div class="row">
+<!--    <div class="row">-->
+<!--      <div class="col-xl-6 col-md-6">-->
+<!--        <input type="text" class="form-control"  id="motUsername"-->
+<!--               placeholder="İstifadəçi adı"><br>-->
+<!--        <input type="text" class="form-control"id="motPosition"-->
+<!--               placeholder="Vəzifəsi"><br>-->
+<!--        <select  name="select" class="form-control form-control-info">-->
+<!--&lt;!&ndash;          <option *ngFor="let userType of userTypeList" [ngValue]="userType">{{userType.name}}&ndash;&gt;-->
+<!--&lt;!&ndash;          </option>&ndash;&gt;-->
+<!--        </select>-->
+<!--      </div>-->
+<!--      <div class="col-xl-6 col-md-6">-->
+<!--        <select name="select"class="form-control form-control-info">-->
+<!--          <option selected disabled>Əsas qrup</option>-->
+<!--&lt;!&ndash;          <option *ngFor="let group of groupList" [ngValue]="group">{{group.name}}</option>&ndash;&gt;-->
+<!--        </select><br>-->
+
+
+
+<!--    </div><br>-->
+    <div class="row" style="margin-top: 50px">
       <div class="col-sm-12">
-        <h5>Work Title</h5>
-        </div>
-      <div class="col-sm-12 centered-content">
+        <mat-dialog-content class="mat-typography">
+          <form [formGroup]="workForm">
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class="example-full-width">
+                  <mat-label>Təhsil pilləsi </mat-label>
+                  <mat-select formControlName="educationLevel">
+                    <mat-option *ngFor="let food of foods" [value]="food">
+                      {{food}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="example-full-width">
+                  <mat-label>Təhsil ocağı </mat-label>
+                  <mat-select formControlName="place">
+                    <mat-option *ngFor="let uni of universities" [value]="uni">
+                      {{uni}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance = "outline" class="example-full-width">
+                  <mat-label>İxtisas</mat-label>
+                  <input matInput formControlName="profession">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="startDate">Başlanğıc tarix:</label>
+                      <input type="date" class="form-control" id="startDate" formControlName="birthDate">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="endDate">Bitmə tarixi:</label>
+                      <input type="date" class="form-control" id="endDate" formControlName="birthDateEx">
+                    </div>
+                  </div>
+                  <br>
+                  <mat-form-field appearance = "fill"style="padding-top: 20px" >
+                    <mat-label>Qeyd </mat-label>
+                    <textarea matInput></textarea>
+                  </mat-form-field>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </mat-dialog-content>
+      </div>
+      <div class="col-md-2"><input type="checkbox" name="item" [(ngModel)]="toShow"/> Ikinci tehsil <br /></div>
+
+
+      <div  *ngIf="toShow" class="col-sm-12">
+        <mat-dialog-content class="mat-typography">
+          <form [formGroup]="workForm">
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field appearance="fill" class="example-full-width">
+                  <mat-label>Təhsil pilləsi </mat-label>
+                  <mat-select formControlName="educationLevel">
+                    <mat-option *ngFor="let food of foods" [value]="food">
+                      {{food}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="example-full-width">
+                  <mat-label>Təhsil ocağı </mat-label>
+                  <mat-select formControlName="place">
+                    <mat-option *ngFor="let uni of universities" [value]="uni">
+                      {{uni}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance = "outline" class="example-full-width">
+                  <mat-label>İxtisas</mat-label>
+                  <input matInput formControlName="profession">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="startDateSecond">Başlanğıc tarix:</label>
+                      <input type="date" class="form-control" id="startDateSecond" formControlName="birthDate">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="endDateSecond">Bitmə tarixi:</label>
+                      <input type="date" class="form-control" id="endDateSecond" formControlName="birthDateEx">
+                    </div>
+                  </div>
+                  <br>
+                  <mat-form-field appearance = "fill"style="padding-top: 20px" >
+                    <mat-label>Qeyd </mat-label>
+                    <textarea matInput></textarea>
+                  </mat-form-field>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </mat-dialog-content>
+      </div>
+
+      <div  style="padding-top:50px;align-content: end">
         <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
+          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
         </div>
       </div>
     </div>
   </aw-wizard-step>
+
+
+
   <aw-wizard-step stepTitle="Ünvan">
     <div class="row">
       <div class="col-sm-12">
         <h5>Address Title</h5>
          </div>
-      <div class="col-sm-12 centered-content">
+      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
         <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
+          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
         </div>
       </div>
     </div>
@@ -268,11 +409,11 @@
         <h5>Finished Title</h5>
 
       </div>
-      <div class="col-sm-12 centered-content">
+      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
         <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
+          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
         </div>
       </div>
     </div>
@@ -283,11 +424,11 @@
         <h5>Finished Title</h5>
 
       </div>
-      <div class="col-sm-12 centered-content">
+      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
         <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-primary btn-sm" awNextStep>Növbəti</button>
+          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
         </div>
       </div>
     </div>
@@ -305,11 +446,11 @@
               <mat-card-header>
                 <mat-card-title>Elektron materiali daxil edin</mat-card-title>
                 <mat-card-subtitle>
-                  <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" ngModel/>
-                  <mat-form-field class="example-full-width" (click)="fileInput.click()">
-                    <input matInput placeholder="Choose File" value="{{fileInput.value.substr(fileInput.value.lastIndexOf('\\')+1)}}">
-                    <mat-icon matSuffix>folder_open</mat-icon>
-                  </mat-form-field>
+<!--                  <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" ngModel/>-->
+<!--                  <mat-form-field class="example-full-width" (click)="fileInput.click()">-->
+<!--                    <input matInput placeholder="Choose File" value="{{fileInput.value.substr(fileInput.value.lastIndexOf('\\')+1)}}">-->
+<!--                    <mat-icon matSuffix>folder_open</mat-icon>-->
+<!--                  </mat-form-field>-->
                   &nbsp;
                   <button mat-raised-button color="primary" >Upload</button>
                 </mat-card-subtitle>
@@ -319,11 +460,11 @@
           &nbsp;&nbsp;
         </div>
       </div>
-      <div class="col-sm-12 centered-content">
+      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
         <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-sm" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-success btn-sm" awResetWizard>Bitir</button>
+          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
+          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
+          <button type="button" class="btn btn-success btn-lg" awResetWizard>Bitir</button>
         </div>
       </div>
     </div>

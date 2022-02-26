@@ -3,7 +3,7 @@ export interface Person {
   name: string;
   surname: string;
   fathername: string;
-  militarystage: string;
+  militarystate: string;
   status: string;
   insertdate: Date;
   fin: string;
