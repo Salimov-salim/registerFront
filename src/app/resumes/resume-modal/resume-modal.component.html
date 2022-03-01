@@ -1,474 +1,359 @@
-<!--<h2 mat-dialog-title>{{ data ? 'Edit' : 'Yeni Şəxs' }}</h2>-->
-<!--<mat-dialog-content class="mat-typography">-->
-<!--  <div *ngIf="showSpinner">-->
-<!--    <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
-<!--    <br>-->
-<!--  </div>-->
-<!--  <form [formGroup]="personForm">-->
-<!--    <mat-form-field class="example-full-width">-->
-<!--      <mat-label>Başlıq</mat-label>-->
-<!--      <input matInput formControlName="title">-->
-<!--    </mat-form-field>-->
-<!--    <mat-form-field class="example-full-width">-->
-<!--      <mat-label>Ad,Soyad ve Ata Adı</mat-label>-->
-<!--      <input matInput formControlName="name">-->
-<!--    </mat-form-field>-->
-<!--    <mat-form-field class="example-full-width">-->
-<!--      <mat-label>Telefon</mat-label>-->
-<!--      <input matInput formControlName="phone">-->
-<!--    </mat-form-field>-->
-<!--    <mat-form-field class="example-full-width">-->
-<!--      <mat-label>E-poçt hesabı</mat-label>-->
-<!--      <input matInput formControlName="email">-->
-<!--    </mat-form-field>-->
-<!--    <mat-form-field class="example-full-width">-->
-<!--      <mat-label>Ünvanı</mat-label>-->
-<!--      <textarea matInput formControlName="address"></textarea>-->
-<!--    </mat-form-field>-->
-<!--  </form>-->
-<!--</mat-dialog-content>-->
+<div class="app-modal-body">
+  <aw-wizard #wizard class="arc-wizard" style="alignment: center;margin-top: 30px" navBarLayout="large-filled-symbols">
 
-<!--<mat-dialog-actions align="end">-->
-<!--  <div class="flex-grow-1 text-start" *ngIf="data">-->
-<!--    <button mat-stroked-button color="warn" (click)="deleteCard()" [disabled]="showSpinner">Sil</button>-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <button mat-button mat-dialog-close>Imtina</button>-->
-<!--    <button mat-flat-button color="primary" (click)="data ? updateCard() : addCard()" [disabled]="personForm.invalid || showSpinner">{{ data ? 'Edit' : 'Elave et' }}</button>-->
-<!--  </div>-->
-<!--</mat-dialog-actions>-->
-
-<!--2ci hisse-->
-
-<!--<app-card cardTitle="Left Nav Wizard" [options]="false">-->
-<!--  <aw-wizard #wizard class="arc-wizard" navBarLocation="left">-->
-<!--    <aw-wizard-step stepTitle="Profile">-->
-<!--      <div class="row">-->
-<!--        <div class="col-sm-12">-->
-<!--          <h5>Profile Title</h5>-->
-<!--          <hr>-->
-<!--          <h6>Sub title 1</h6>-->
-<!--          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's-->
-<!--            standard dummy text.</p>-->
-<!--          <h6 class="mt-3">Sub title 2</h6>-->
-<!--          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>-->
-<!--        </div>-->
-<!--        <div class="col-sm-12 centered-content">-->
-<!--          <div class="btn-group mt-10">-->
-<!--            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </aw-wizard-step>-->
-<!--    <aw-wizard-step stepTitle="Work">-->
-<!--      <div class="row">-->
-<!--        <div class="col-sm-12">-->
-<!--          <h5>Work Title</h5>-->
-<!--          <hr>-->
-<!--          <h6>Sub title 1</h6>-->
-<!--          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's-->
-<!--            standard dummy text.</p>-->
-<!--          <h6 class="mt-3">Sub title 2</h6>-->
-<!--          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>-->
-<!--        </div>-->
-<!--        <div class="col-sm-12 centered-content">-->
-<!--          <div class="btn-group mt-10">-->
-<!--            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>-->
-<!--            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </aw-wizard-step>-->
-<!--    <aw-wizard-step stepTitle="Address">-->
-<!--      <div class="row">-->
-<!--        <div class="col-sm-12">-->
-<!--          <h5>Address Title</h5>-->
-<!--          <hr>-->
-<!--          <h6>Sub title 1</h6>-->
-<!--          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's-->
-<!--            standard dummy text.</p>-->
-<!--          <h6 class="mt-3">Sub title 2</h6>-->
-<!--          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>-->
-<!--        </div>-->
-<!--        <div class="col-sm-12 centered-content">-->
-<!--          <div class="btn-group mt-10">-->
-<!--            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>-->
-<!--            <button type="button" class="btn btn-primary btn-sm" awNextStep>Continue</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </aw-wizard-step>-->
-<!--    <aw-wizard-step stepTitle="Finished">-->
-<!--      <div class="row">-->
-<!--        <div class="col-sm-12">-->
-<!--          <h5>Finished Title</h5>-->
-<!--          <hr>-->
-<!--          <h6>Sub title 1</h6>-->
-<!--          <p><strong>@Title content 1!.. </strong> Lorem Ipsum is simply dummy text of the printing <strong>@Content content 1 </strong> and typesetting industry. Lorem Ipsum has been the industry's-->
-<!--            standard dummy text.</p>-->
-<!--          <h6 class="mt-3">Sub title 2</h6>-->
-<!--          <p><strong>@Title content 2!.. </strong> Lorem Ipsum is simply dummy text and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>-->
-<!--        </div>-->
-<!--        <div class="col-sm-12 centered-content">-->
-<!--          <div class="btn-group mt-10">-->
-<!--            <button type="button" class="btn btn-secondary btn-sm" awPreviousStep>Back</button>-->
-<!--            <button type="button" class="btn btn-success btn-sm" awResetWizard>Finished</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </aw-wizard-step>-->
-<!--  </aw-wizard>-->
-<!--</app-card>-->
-
-
-<!--3cu hisse-->
-
-<!--<app-progress #progress (stateChange)="onStateChange($event)">-->
-<!--  <app-progress-step>-->
-<!--    <h1>Şəxs haqqında məlumatlar</h1>-->
-<!--    <p>-->
-<!--      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, velit-->
-<!--      eius expedita quis tempore suscipit minima repudiandae. Magnam tempore,-->
-<!--      nostrum facilis quas, cumque dicta eveniet vero, nisi cum ipsa eos.-->
-<!--    </p>-->
-<!--    <button mat-raised-button color="primary" (click)="goNext(progress)">-->
-<!--      next-->
-<!--    </button>-->
-<!--  </app-progress-step>-->
-
-<!--  <app-progress-step>-->
-<!--    <h1>step 2</h1>-->
-
-<!--    <form class="example-form" [formGroup]="testForm">-->
-<!--      <mat-form-field class="example-full-width">-->
-<!--        <mat-label>Favorite food</mat-label>-->
-<!--        <input-->
-<!--          formControlName="food"-->
-<!--          matInput-->
-<!--          placeholder="Ex. Pizza"-->
-<!--          value="Sushi"-->
-<!--        />-->
-<!--      </mat-form-field>-->
-
-<!--      <mat-form-field class="example-full-width">-->
-<!--        <mat-label>Leave a comment</mat-label>-->
-<!--        <textarea-->
-<!--          matInput-->
-<!--          formControlName="comment"-->
-<!--          placeholder="Ex. It makes me feel..."-->
-<!--        ></textarea>-->
-<!--      </mat-form-field>-->
-<!--      <button progressStepPrev mat-raised-button color="accent">prev</button>-->
-<!--      <button-->
-<!--        style="margin-left: 10px"-->
-<!--        progressStepNext-->
-<!--        [disabled]="!testForm.valid"-->
-<!--        mat-raised-button-->
-<!--        color="primary"-->
-<!--      >-->
-<!--        next-->
-<!--      </button>-->
-<!--    </form>-->
-<!--  </app-progress-step>-->
-<!--  <app-progress-step>-->
-<!--    <h1>step 3</h1>-->
-<!--    <p>-->
-<!--      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda sint-->
-<!--      consectetur est quos voluptatem eveniet sed maxime exercitationem officia.-->
-<!--      Ipsa porro inventore earum commodi vero vel deleniti unde ad ipsam?-->
-<!--    </p>-->
-<!--    <button progressStepPrev mat-raised-button color="accent">prev</button>-->
-<!--    <button progressStepNext mat-raised-button color="primary">next</button>-->
-<!--  </app-progress-step>-->
-<!--  <app-progress-step>-->
-<!--    <h1>step 4</h1>-->
-<!--    <p>-->
-<!--      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda sint-->
-<!--      consectetur est quos voluptatem eveniet sed maxime exercitationem officia.-->
-<!--    </p>-->
-<!--    <button progressStepPrev mat-raised-button color="accent">prev</button>-->
-<!--    <button progressStepNext mat-raised-button color="primary">next</button>-->
-<!--  </app-progress-step>-->
-<!--</app-progress>-->
-
-
-<!--4 cu hisse-->
-<aw-wizard #wizard class="arc-wizard" style="alignment: center;margin-top: 30px">
-  <aw-wizard-step stepTitle="Profil">
-    <div class="row" >
+    <aw-wizard-step stepTitle="Profil">
       <div class="col-sm-12">
-        <mat-dialog-content class="mat-typography">
-          <div *ngIf="showSpinner">
-            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-            <br>
+      <div class="row">
+          <mat-dialog-content class="mat-typography">
+            <div *ngIf="showSpinner">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+              <br>
+            </div>
+            <form [formGroup]="personForm" >
+              <div class="row">
+              <div class="col-md-6">
+              <mat-form-field appearance = "outline" class="example-full-width">
+                <mat-label>Ad </mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+              </div>
+              <div class="col-md-6">
+              <mat-form-field  appearance = "outline" class="example-full-width">
+                <mat-label>Soyad</mat-label>
+                <input matInput formControlName="surname">
+              </mat-form-field>
+              </div>
+              <div class="col-md-6">
+              <mat-form-field  appearance = "outline" class="example-full-width">
+                <mat-label>Ata Adı</mat-label>
+                <input matInput formControlName="fatherName">
+              </mat-form-field>
+              </div>
+              <div class="col-md-6">
+              <mat-form-field appearance = "outline" class="example-full-width">
+                <mat-label>Telefon</mat-label>
+                <input matInput formControlName="phone">
+              </mat-form-field>
+              </div>
+              <div class="col-md-6">
+              <mat-form-field appearance = "outline" class="example-full-width">
+                <mat-label>Herbi mukellefiyyet</mat-label>
+                <input matInput formControlName="military">
+              </mat-form-field>
+              </div>
+              <div class="col-md-6">
+              <mat-form-field appearance = "outline" class="example-full-width" >
+                <mat-label>E-poçt hesabı</mat-label>
+                <input matInput placeholder="exam@example.com" [formControl]="email" formControlName="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              </div>
+              <div class="col-md-6">
+              <mat-form-field appearance = "outline" class="example-full-width">
+                <mat-label>Ünvanı</mat-label>
+                <textarea matInput formControlName="address"></textarea>
+              </mat-form-field>
+              </div>
+              </div>
+            </form>
+          </mat-dialog-content>
+        </div>
+
+        <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
+            <button *ngIf="data" type="button" class="btn btn-secondary btn-lg"  (click)="deleteCard()" [disabled]="showSpinner">Sil</button>
+            <button type="button" class="btn btn-secondary btn-lg" mat-dialog-close >Imtina</button>
+            <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
+        </div>
+      </div>
+      </aw-wizard-step >
+    <aw-wizard-step stepTitle="Təhsil">
+      <div class="row" style="margin-top: 50px">
+        <div class="col-sm-12">
+          <mat-dialog-content class="mat-typography">
+            <form>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Təhsil pilləsi </mat-label>
+                    <mat-select formControlName="educationLevel">
+                      <mat-option *ngFor="let food of foods" [value]="food">
+                        {{food}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Təhsil ocağı </mat-label>
+                    <mat-select formControlName="place">
+                      <mat-option *ngFor="let uni of this.universities" [value]="uni">
+                        {{uni.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance = "outline" class="example-full-width">
+                    <mat-label>İxtisas</mat-label>
+                    <input matInput formControlName="profession">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="startDate">Başlanğıc tarix:</label>
+                        <input type="date" class="form-control" id="startDate" formControlName="birthDate">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="endDate">Bitmə tarixi:</label>
+                        <input type="date" class="form-control" id="endDate" formControlName="birthDateEx">
+                      </div>
+                    </div>
+                    <br>
+                    <mat-form-field appearance = "fill"style="padding-top: 20px" >
+                      <mat-label>Qeyd </mat-label>
+                      <textarea matInput></textarea>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+              </div>
+            </form>
+          </mat-dialog-content>
+        </div>
+        <div class="col-md-2"><input type="checkbox" name="item" [(ngModel)]="toShow"/> Ikinci tehsil <br /></div>
+
+
+        <div  *ngIf="toShow" class="col-sm-12">
+          <mat-dialog-content class="mat-typography">
+            <form>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Təhsil pilləsi </mat-label>
+                    <mat-select formControlName="educationLevel">
+                      <mat-option *ngFor="let food of foods" [value]="food">
+                        {{food}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Təhsil ocağı </mat-label>
+                    <mat-select formControlName="place">
+                      <mat-option *ngFor="let uni of universities" [value]="uni">
+                        {{uni}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance = "outline" class="example-full-width">
+                    <mat-label>İxtisas</mat-label>
+                    <input matInput formControlName="profession">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="startDateSecond">Başlanğıc tarix:</label>
+                        <input type="date" class="form-control" id="startDateSecond" formControlName="birthDate">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="endDateSecond">Bitmə tarixi:</label>
+                        <input type="date" class="form-control" id="endDateSecond" formControlName="birthDateEx">
+                      </div>
+                    </div>
+                    <br>
+                    <mat-form-field appearance = "fill"style="padding-top: 20px" >
+                      <mat-label>Qeyd </mat-label>
+                      <textarea matInput></textarea>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+              </div>
+            </form>
+          </mat-dialog-content>
+        </div>
+
+        <div  style="padding-top:50px;align-content: end" align="end">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
+            <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
+            <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
           </div>
-          <form [formGroup]="personForm" >
-<!--            <mat-form-field class="example-full-width">-->
-<!--              <mat-label>Başlıq</mat-label>-->
-<!--              <input matInput formControlName="title">-->
-<!--            </mat-form-field>-->
-            <mat-form-field appearance = "outline" class="example-full-width">
-              <mat-label>Ad </mat-label>
-              <input matInput formControlName="name">
-            </mat-form-field>
+        </div>
+      </div>
+    </aw-wizard-step >
+    <aw-wizard-step stepTitle="İş">
+      <h5>Son iş yerləri :</h5>
+      <div class="row">
+        <div class="row">
+          <div class="col-md-6">
             <mat-form-field  appearance = "outline" class="example-full-width">
-              <mat-label>Soyad</mat-label>
+              <mat-label>Is</mat-label>
               <input matInput formControlName="surname">
             </mat-form-field>
+          </div>
+          <div class="col-md-6">
             <mat-form-field  appearance = "outline" class="example-full-width">
-              <mat-label>Ata Adı</mat-label>
-              <input matInput formControlName="fatherName">
+              <mat-label>Sahe</mat-label>
+              <input matInput formControlName="surname">
             </mat-form-field>
-            <mat-form-field appearance = "outline" class="example-full-width">
-              <mat-label>Telefon</mat-label>
-              <input matInput formControlName="phone">
-            </mat-form-field>
-            <mat-form-field appearance = "outline" class="example-full-width">
-              <mat-label>Herbi mukellefiyyet</mat-label>
-              <input matInput formControlName="military">
-            </mat-form-field>
-            <mat-form-field appearance = "outline" class="example-full-width" >
-              <mat-label>E-poçt hesabı</mat-label>
-              <input matInput placeholder="exam@example.com" [formControl]="email" formControlName="email" required>
-              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance = "outline" class="example-full-width">
-              <mat-label>Ünvanı</mat-label>
-              <textarea matInput formControlName="address"></textarea>
-            </mat-form-field>
-          </form>
-        </mat-dialog-content>
-      </div>
-
-      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
-          <button *ngIf="data" type="button" class="btn btn-secondary btn-lg"  (click)="deleteCard()" [disabled]="showSpinner">Sil</button>
-          <button type="button" class="btn btn-secondary btn-lg" mat-dialog-close >Imtina</button>
-          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
-      </div>
-    </div>
-  </aw-wizard-step>
-  <aw-wizard-step stepTitle="Təhsil">
-<!--    <div class="row">-->
-<!--      <div class="col-xl-6 col-md-6">-->
-<!--        <input type="text" class="form-control"  id="motUsername"-->
-<!--               placeholder="İstifadəçi adı"><br>-->
-<!--        <input type="text" class="form-control"id="motPosition"-->
-<!--               placeholder="Vəzifəsi"><br>-->
-<!--        <select  name="select" class="form-control form-control-info">-->
-<!--&lt;!&ndash;          <option *ngFor="let userType of userTypeList" [ngValue]="userType">{{userType.name}}&ndash;&gt;-->
-<!--&lt;!&ndash;          </option>&ndash;&gt;-->
-<!--        </select>-->
-<!--      </div>-->
-<!--      <div class="col-xl-6 col-md-6">-->
-<!--        <select name="select"class="form-control form-control-info">-->
-<!--          <option selected disabled>Əsas qrup</option>-->
-<!--&lt;!&ndash;          <option *ngFor="let group of groupList" [ngValue]="group">{{group.name}}</option>&ndash;&gt;-->
-<!--        </select><br>-->
-
-
-
-<!--    </div><br>-->
-    <div class="row" style="margin-top: 50px">
-      <div class="col-sm-12">
-        <mat-dialog-content class="mat-typography">
-          <form [formGroup]="workForm">
+          </div>
+          <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">
-                <mat-form-field appearance="fill" class="example-full-width">
-                  <mat-label>Təhsil pilləsi </mat-label>
-                  <mat-select formControlName="educationLevel">
-                    <mat-option *ngFor="let food of foods" [value]="food">
-                      {{food}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance="fill" class="example-full-width">
-                  <mat-label>Təhsil ocağı </mat-label>
-                  <mat-select formControlName="place">
-                    <mat-option *ngFor="let uni of universities" [value]="uni">
-                      {{uni}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance = "outline" class="example-full-width">
-                  <mat-label>İxtisas</mat-label>
-                  <input matInput formControlName="profession">
-                </mat-form-field>
+                <div class="form-group">
+                  <label for="startDateForWork">Başlanğıc tarix:</label>
+                  <input type="date" class="form-control" id="startDateForWork" formControlName="birthDate">
+                </div>
               </div>
               <div class="col-md-6">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="startDate">Başlanğıc tarix:</label>
-                      <input type="date" class="form-control" id="startDate" formControlName="birthDate">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="endDate">Bitmə tarixi:</label>
-                      <input type="date" class="form-control" id="endDate" formControlName="birthDateEx">
-                    </div>
-                  </div>
-                  <br>
-                  <mat-form-field appearance = "fill"style="padding-top: 20px" >
-                    <mat-label>Qeyd </mat-label>
-                    <textarea matInput></textarea>
-                  </mat-form-field>
+                <div class="form-group">
+                  <label for="endDateForWork">Bitmə tarixi:</label>
+                  <input type="date" class="form-control" id="endDateForWork" formControlName="birthDateEx">
                 </div>
-
               </div>
+
+
             </div>
-          </form>
-        </mat-dialog-content>
-      </div>
-      <div class="col-md-2"><input type="checkbox" name="item" [(ngModel)]="toShow"/> Ikinci tehsil <br /></div>
 
-
-      <div  *ngIf="toShow" class="col-sm-12">
-        <mat-dialog-content class="mat-typography">
-          <form [formGroup]="workForm">
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance = "fill">
+              <mat-label>Qeyd </mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+            <button type="button" class="btn btn-outline-primary" style="margin-left: 20px; height: max-content;" (click)="newWork()">
+              Yeni</button>
+          </div>
+        </div>
+        <div class="row" *ngIf="work2">
+          <div class="col-md-6">
+            <mat-form-field  appearance = "outline" class="example-full-width">
+              <mat-label>Is</mat-label>
+              <input matInput formControlName="surname">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field  appearance = "outline" class="example-full-width">
+              <mat-label>Sahe</mat-label>
+              <input matInput formControlName="surname">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">
-                <mat-form-field appearance="fill" class="example-full-width">
-                  <mat-label>Təhsil pilləsi </mat-label>
-                  <mat-select formControlName="educationLevel">
-                    <mat-option *ngFor="let food of foods" [value]="food">
-                      {{food}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance="fill" class="example-full-width">
-                  <mat-label>Təhsil ocağı </mat-label>
-                  <mat-select formControlName="place">
-                    <mat-option *ngFor="let uni of universities" [value]="uni">
-                      {{uni}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance = "outline" class="example-full-width">
-                  <mat-label>İxtisas</mat-label>
-                  <input matInput formControlName="profession">
-                </mat-form-field>
+                <div class="form-group">
+                  <label>Başlanğıc tarix:</label>
+                  <input type="date" class="form-control"  formControlName="birthDate">
+                </div>
               </div>
               <div class="col-md-6">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="startDateSecond">Başlanğıc tarix:</label>
-                      <input type="date" class="form-control" id="startDateSecond" formControlName="birthDate">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="endDateSecond">Bitmə tarixi:</label>
-                      <input type="date" class="form-control" id="endDateSecond" formControlName="birthDateEx">
-                    </div>
-                  </div>
-                  <br>
-                  <mat-form-field appearance = "fill"style="padding-top: 20px" >
-                    <mat-label>Qeyd </mat-label>
-                    <textarea matInput></textarea>
-                  </mat-form-field>
+                <div class="form-group">
+                  <label>Bitmə tarixi:</label>
+                  <input type="date" class="form-control"formControlName="birthDateEx">
                 </div>
-
               </div>
             </div>
-          </form>
-        </mat-dialog-content>
-      </div>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance = "fill">
+              <mat-label>Qeyd </mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+            <button type="button" class="btn btn-outline-primary" style="margin-left: 20px; height: max-content;" (click)="closeWork(2)">
+              Sil</button>
+          </div>
+        </div>
 
-      <div  style="padding-top:50px;align-content: end">
-        <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
+        <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
+            <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
+            <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
+          </div>
         </div>
       </div>
-    </div>
-  </aw-wizard-step>
+    </aw-wizard-step >
+    <aw-wizard-step stepTitle="Elektron hesab">
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Elektron hesab məlumatları:</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Sosial novu: </mat-label>
+                <mat-select formControlName="place">
+                  <mat-option *ngFor="let sp of this.socialPages" [value]="sp">
+                    {{sp.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Təhsil pilləsi </mat-label>
+                <mat-select formControlName="educationLevel">
+                  <mat-option *ngFor="let food of foods" [value]="food">
+                    {{food}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
 
-
-
-  <aw-wizard-step stepTitle="Ünvan">
-    <div class="row">
-      <div class="col-sm-12">
-        <h5>Address Title</h5>
-         </div>
-      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
-        <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
+<!--              <mat-form-field appearance = "outline" class="example-full-width">-->
+<!--                <mat-label>İxtisas</mat-label>-->
+<!--                <input matInput formControlName="profession">-->
+<!--              </mat-form-field>-->
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
+            <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
+            <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
+          </div>
         </div>
       </div>
-    </div>
-  </aw-wizard-step>
-  <aw-wizard-step stepTitle="İş">
-    <div class="row">
-      <div class="col-sm-12">
-        <h5>Finished Title</h5>
+    </aw-wizard-step>
+    <aw-wizard-step stepTitle="Elektron CV" [navigationSymbol]="{ symbol: '&#xe8e9;', fontFamily: 'feather' }"
+                    [style.font-weight]="900">
+      <div class="row">
+        <div class="col-sm-12">
 
-      </div>
-      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
-        <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
+          <div style="margin-top: 50px" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+
+
+
+              <mat-progress-bar mode="determinate"></mat-progress-bar>
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>Elektron materiali daxil edin</mat-card-title>
+                  <mat-card-subtitle>
+  <!--                  <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" ngModel/>-->
+  <!--                  <mat-form-field class="example-full-width" (click)="fileInput.click()">-->
+  <!--                    <input matInput placeholder="Choose File" value="{{fileInput.value.substr(fileInput.value.lastIndexOf('\\')+1)}}">-->
+  <!--                    <mat-icon matSuffix>folder_open</mat-icon>-->
+  <!--                  </mat-form-field>-->
+                    &nbsp;
+                    <button mat-raised-button color="primary" >Upload</button>
+                  </mat-card-subtitle>
+                </mat-card-header>
+              </mat-card>
+
+            &nbsp;&nbsp;
+          </div>
+        </div>
+        <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
+            <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
+            <button type="button" class="btn btn-success btn-lg" awResetWizard>Bitir</button>
+          </div>
         </div>
       </div>
-    </div>
-  </aw-wizard-step>
-  <aw-wizard-step stepTitle="Elektron hesab">
-    <div class="row">
-      <div class="col-sm-12">
-        <h5>Finished Title</h5>
-
-      </div>
-      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
-        <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
-        </div>
-      </div>
-    </div>
-  </aw-wizard-step>
-  <aw-wizard-step stepTitle="Elektron CV">
-    <div class="row">
-      <div class="col-sm-12">
-
-        <div style="margin-top: 50px" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-
-
-
-            <mat-progress-bar mode="determinate"></mat-progress-bar>
-            <mat-card>
-              <mat-card-header>
-                <mat-card-title>Elektron materiali daxil edin</mat-card-title>
-                <mat-card-subtitle>
-<!--                  <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" ngModel/>-->
-<!--                  <mat-form-field class="example-full-width" (click)="fileInput.click()">-->
-<!--                    <input matInput placeholder="Choose File" value="{{fileInput.value.substr(fileInput.value.lastIndexOf('\\')+1)}}">-->
-<!--                    <mat-icon matSuffix>folder_open</mat-icon>-->
-<!--                  </mat-form-field>-->
-                  &nbsp;
-                  <button mat-raised-button color="primary" >Upload</button>
-                </mat-card-subtitle>
-              </mat-card-header>
-            </mat-card>
-
-          &nbsp;&nbsp;
-        </div>
-      </div>
-      <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
-        <div class="btn-group mt-10">
-          <button type="button" class="btn btn-danger btn-lg" mat-dialog-close>Imtina</button>
-          <button type="button" class="btn btn-secondary btn-lg" awPreviousStep>Geri</button>
-          <button type="button" class="btn btn-success btn-lg" awResetWizard>Bitir</button>
-        </div>
-      </div>
-    </div>
-  </aw-wizard-step>
-</aw-wizard>
+    </aw-wizard-step>
+  </aw-wizard>
+</div>
 
 

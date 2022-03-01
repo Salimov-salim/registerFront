@@ -4,6 +4,7 @@ import {PersonRegistryService} from "../services/person-registry.service";
 import {ResumeModalComponent} from "./resume-modal/resume-modal.component";
 import {Ress} from "../models/ress";
 import {Observable} from "rxjs";
+import {HelperService} from "../services/helper.service";
 
 @Component({
   selector: 'app-resumes',
@@ -15,17 +16,17 @@ export class ResumesComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public personRegistryService: PersonRegistryService
+    public personRegistryService: PersonRegistryService,
+    public helperService:HelperService
   ) { }
 
   ngOnInit(): void {
     this.personRegistryService.getPersons();
+    this.helperService.getUniversities();
+    this.helperService.getSocialPages();
   }
 
   openAddCardModal(): void {
-    this.dialog.open(ResumeModalComponent, {
-      width: '1000px',
-      height:'800px'
-    });
+    this.dialog.open(ResumeModalComponent);
   }
 }

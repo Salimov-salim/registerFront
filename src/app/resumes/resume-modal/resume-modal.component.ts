@@ -5,6 +5,22 @@ import {PersonRegistryService} from "../../services/person-registry.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SnackbarService} from "../../services/snackbar.service";
 import {Person} from "../../models/person";
+import {HelperService} from "../../services/helper.service";
+import {Universities} from "../../models/universities";
+
+
+export class FormInput {
+  email: any;
+  password: any;
+  confirmPassword: any;
+  requiredInput: any;
+  url: any;
+  phone: any;
+  cmbGear: any;
+  address: any;
+  file: any;
+  switcher: any;
+}
 
 @Component({
   selector: 'app-resume-modal',
@@ -14,14 +30,20 @@ import {Person} from "../../models/person";
 export class ResumeModalComponent implements OnInit {
   personForm!: FormGroup;
   showSpinner: boolean = false;
+  public isSubmit: boolean;
+  public formInput!: FormInput;
 
   foods=['Orta','Bakalavr','Magistr','Doktorantura','Aspirantura'];
-  universities=['adnsu','bdu','atu'];
+  universities=this.helperService.universities;
+  socialPages=this.helperService.socialPages;
   toShow:boolean=false;
-  // selectFile(event:any) {
-  //   this.selectedFiles = event.target.files;
-  // }
-  //
+
+
+  phone2:boolean=false;
+  phone3:boolean=false;
+
+  work2:boolean=false;
+  work3:boolean=false;
 
   email = new FormControl('', [Validators.required, Validators.email]);
   getErrorMessage() {
@@ -32,16 +54,34 @@ export class ResumeModalComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   constructor(
+
+
+
     private dialogRef: MatDialogRef<ResumeModalComponent>,
     private fb: FormBuilder,
     private cardService: PersonRegistryService,
+    public helperService: HelperService,
     private _snackBar: MatSnackBar,
     private snackbarService: SnackbarService,
 
     @Inject(MAT_DIALOG_DATA) public data: Person
-  ) { }
+  ) { this.isSubmit = false;}
 
   ngOnInit(): void {
+
+    this.formInput = {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      requiredInput: '',
+      url: '',
+      phone: '',
+      cmbGear: '',
+      address: '',
+      file: '',
+      switcher: ''
+    };
+
     console.log(this.data);
     this.personForm = this.fb.group({
       // name: [this.data?.name || '', Validators.maxLength(50)],
@@ -54,15 +94,6 @@ export class ResumeModalComponent implements OnInit {
       address: [this.data?.fin || '', Validators.maxLength(255)],
     });
   }
-
-  workForm = new FormGroup({
-    educationLevel: new FormControl('', Validators.required),
-    comment: new FormControl('', Validators.required),
-  });
-  personalForm = new FormGroup({
-    last_work: new FormControl('', Validators.required),
-    position: new FormControl('', Validators.required),
-  });
 
 
 
@@ -107,6 +138,33 @@ export class ResumeModalComponent implements OnInit {
   getError(message: string): void {
     this.snackbarService.createSnackbar('error', message);
     this.showSpinner = false;
+  }
+
+
+
+
+//  ---------------------------
+  newPhone(){
+    if(this.phone2==true && !this.phone3){
+      this.phone3=true;
+    }else{
+      this.phone2=true;
+    }
+  }
+  newWork(){
+    if(this.work2==true && !this.work3){
+      this.work3=true;
+    }else{
+      this.work2=true;
+    }
+  }
+
+  closeWork(workType:number){
+    if(workType==2){
+      this.work2=false;
+    }else if(workType==3){
+      this.work3=false;
+    }
   }
 
 }

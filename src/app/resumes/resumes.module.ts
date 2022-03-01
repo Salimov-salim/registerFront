@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 
 import { ResumesRoutingModule } from './resumes-routing.module';
@@ -20,6 +20,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {NgModule} from "@angular/core";
+
 @NgModule({
   declarations: [
     ResumesComponent,
