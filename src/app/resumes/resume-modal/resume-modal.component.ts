@@ -7,20 +7,12 @@ import {SnackbarService} from "../../services/snackbar.service";
 import {Person} from "../../models/person";
 import {HelperService} from "../../services/helper.service";
 import {Universities} from "../../models/universities";
+import {tap} from "rxjs";
+import {FileService} from "../../services/file.service";
+import {HttpEventType, HttpResponse} from "@angular/common/http";
 
 
-export class FormInput {
-  email: any;
-  password: any;
-  confirmPassword: any;
-  requiredInput: any;
-  url: any;
-  phone: any;
-  cmbGear: any;
-  address: any;
-  file: any;
-  switcher: any;
-}
+
 
 @Component({
   selector: 'app-resume-modal',
@@ -28,12 +20,16 @@ export class FormInput {
   styleUrls: ['./resume-modal.component.scss']
 })
 export class ResumeModalComponent implements OnInit {
+  selectedFiles?: FileList;
+  currentFile?: File;
+  message = '';
+  errorMsg = '';
+
   personForm!: FormGroup;
   showSpinner: boolean = false;
   public isSubmit: boolean;
-  public formInput!: FormInput;
 
-  foods=['Orta','Bakalavr','Magistr','Doktorantura','Aspirantura'];
+  educationLevel=['Orta','Bakalavr','Magistr','Doktorantura','Aspirantura'];
   universities=this.helperService.universities;
   socialPages=this.helperService.socialPages;
   toShow:boolean=false;
@@ -45,18 +41,14 @@ export class ResumeModalComponent implements OnInit {
   work2:boolean=false;
   work3:boolean=false;
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
+  social2:boolean=false;
+  social3:boolean=false
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+
   constructor(
 
-
-
+    private snackBar: MatSnackBar,
+    private uploadService: FileService,
     private dialogRef: MatDialogRef<ResumeModalComponent>,
     private fb: FormBuilder,
     private cardService: PersonRegistryService,
@@ -69,18 +61,6 @@ export class ResumeModalComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.formInput = {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      requiredInput: '',
-      url: '',
-      phone: '',
-      cmbGear: '',
-      address: '',
-      file: '',
-      switcher: ''
-    };
 
     console.log(this.data);
     this.personForm = this.fb.group({
@@ -96,7 +76,44 @@ export class ResumeModalComponent implements OnInit {
   }
 
 
+  selectFile(event:any) {
+    this.selectedFiles = event.target.files;
+  }
 
+  upload(): void {
+    this.errorMsg = '';
+
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+
+      if (file) {
+        this.currentFile = file;
+
+        this.uploadService.upload(this.currentFile).subscribe(
+          (event: any) => {
+            if (event.type === HttpEventType.UploadProgress) {
+              console.log(Math.round(100 * event.loaded / event.total));
+
+            } else if (event instanceof HttpResponse) {
+              this.message = event.body.responseMessage;
+            }
+          },
+          (err: any) => {
+            console.log(err);
+
+            if (err.error && err.error.responseMessage) {
+              this.errorMsg = err.error.responseMessage;
+            } else {
+              this.errorMsg = 'Error occurred while uploading a file!';
+            }
+
+            this.currentFile = undefined;
+          });
+      }
+
+      this.selectedFiles = undefined;
+    }
+  }
 
   addCard(): void {
     this.showSpinner = true;
@@ -164,6 +181,14 @@ export class ResumeModalComponent implements OnInit {
       this.work2=false;
     }else if(workType==3){
       this.work3=false;
+    }
+  }
+
+  newSocialPage(){
+    if(this.social2==true && !this.social2){
+      this.social3=true;
+    }else {
+      this.social2=true;
     }
   }
 
