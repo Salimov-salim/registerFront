@@ -13,7 +13,18 @@ import {HttpEventType, HttpResponse} from "@angular/common/http";
 import {FileUploadService} from "../../file-upload/file-upload.service";
 import {FileToUpload} from "../../file-upload/file-to-upload";
 
+export class FormInput {
+  name:any;
+  surname:any;
+  email: any;
+  military:any;
 
+  phone: any;
+
+  address: any;
+  file: any;
+
+}
 
 const MAX_SIZE: number = 2048576;
 @Component({
@@ -27,7 +38,7 @@ export class ResumeModalComponent implements OnInit {
   message = '';
   errorMsg = '';
 
-  personForm!: FormGroup;
+  formInput!: FormInput;
   showSpinner: boolean = false;
   public isSubmit: boolean;
 
@@ -49,30 +60,30 @@ export class ResumeModalComponent implements OnInit {
 
   constructor(
     private uploadService2: FileUploadService,
-    private snackBar: MatSnackBar,
-    private uploadService: FileService,
+
+
     private dialogRef: MatDialogRef<ResumeModalComponent>,
     private fb: FormBuilder,
     private cardService: PersonRegistryService,
     public helperService: HelperService,
-    private _snackBar: MatSnackBar,
     private snackbarService: SnackbarService,
 
-    @Inject(MAT_DIALOG_DATA) public data: Person
+    @Inject(MAT_DIALOG_DATA) public data: FormInput
   ) { this.isSubmit = false;}
 
   ngOnInit(): void {
-    console.log(this.data);
-    this.personForm = this.fb.group({
-      // name: [this.data?.name || '', Validators.maxLength(50)],
-      name: [this.data?.name || '', [Validators.required, Validators.maxLength(255)]],
-      surname: [this.data?.surname || '', [Validators.required, Validators.maxLength(255)]],
-      // fathername: [this.data?.fathername || '', [Validators.required, Validators.maxLength(255)]],
-      military: [this.data?.militarystate || '', [Validators.required, Validators.maxLength(255)]],
-      phone: [this.data?.email || '', [Validators.required, Validators.maxLength(20)]],
-      email: [this.data?.email || '', [Validators.email, Validators.maxLength(50)]],
-      address: [this.data?.fin || '', Validators.maxLength(255)],
-    });
+    this.formInput = {
+      name: [this.data?.name || ''],
+      surname:[this.data?.surname || ''],
+      military: [this.data?.military || ''],
+      phone: [this.data?.email || ''],
+      email: [this.data?.email || ''],
+      address: [this.data?.address || ''],
+      file: '',
+
+    };
+
+
   }
 
 
@@ -81,35 +92,35 @@ export class ResumeModalComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  addCard(): void {
-    this.showSpinner = true;
-    this.cardService.addCard(this.personForm.value)
-      .subscribe((res: any) => {
-        this.getSuccess(res || 'Şəxs haqqında məlumat uğurla əlavə olundu');
-      }, (err: any) => {
-        this.getError(err.message || 'Uğursuz əməliyyat');
-      });
-  }
+  // addCard(): void {
+  //   this.showSpinner = true;
+  //   this.cardService.addCard(this.personForm.value)
+  //     .subscribe((res: any) => {
+  //       this.getSuccess(res || 'Şəxs haqqında məlumat uğurla əlavə olundu');
+  //     }, (err: any) => {
+  //       this.getError(err.message || 'Uğursuz əməliyyat');
+  //     });
+  // }
 
-  updateCard(): void {
-    this.showSpinner = true;
-    this.cardService.updateCard(this.personForm.value, this.data.id)
-      .subscribe((res: any) => {
-        this.getSuccess(res || 'Şəxs haqqında məlumat uğurla dəyişdirildi');
-      }, (err: any) => {
-        this.getError(err.message || 'Uğursuz əməliyyat');
-      });
-  }
+  // updateCard(): void {
+  //   this.showSpinner = true;
+  //   this.cardService.updateCard(this.formInput., this.data.id)
+  //     .subscribe((res: any) => {
+  //       this.getSuccess(res || 'Şəxs haqqında məlumat uğurla dəyişdirildi');
+  //     }, (err: any) => {
+  //       this.getError(err.message || 'Uğursuz əməliyyat');
+  //     });
+  // }
 
-  deleteCard(): void {
-    this.showSpinner = true;
-    this.cardService.deleteCard(this.data.id)
-      .subscribe((res: any) => {
-        this.getSuccess(res || 'Şəxs haqqında məlumat uğurla silindi');
-      }, (err: any) => {
-        this.getError(err.message || 'Uğursuz əməliyyat');
-      });
-  }
+  // deleteCard(): void {
+  //   this.showSpinner = true;
+  //   this.cardService.deleteCard(this.data.id)
+  //     .subscribe((res: any) => {
+  //       this.getSuccess(res || 'Şəxs haqqında məlumat uğurla silindi');
+  //     }, (err: any) => {
+  //       this.getError(err.message || 'Uğursuz əməliyyat');
+  //     });
+  // }
 
   getSuccess(message: string): void {
     this.snackbarService.createSnackbar('success', message);

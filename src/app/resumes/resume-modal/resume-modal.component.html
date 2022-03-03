@@ -2,15 +2,47 @@
   <aw-wizard #wizard class="arc-wizard" style="alignment: center;margin-top: 30px" navBarLayout="large-filled-symbols">
 
     <aw-wizard-step stepTitle="Profil">
-      <div class="col-sm-12">
+      <div class="row">
         <div style="margin-top: 50px" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
           <mat-card>
+            <div class="row">
 
+            <div class="col-md-6">
+              <mat-form-field  appearance = "outline" class="example-full-width">
+                <mat-label>Ad</mat-label>
+                <input matInput required  [(ngModel)]="formInput.name" >
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field  appearance = "outline" class="example-full-width">
+                <mat-label>Soyad</mat-label>
+                <input matInput required  [(ngModel)]="formInput.surname" >
+              </mat-form-field>
+            </div>
+              <div class="col-md-6">
+                <mat-form-field  appearance = "outline" class="example-full-width">
+                  <mat-label>Ata adi</mat-label>
+                  <input matInput [(ngModel)]="formInput.email" >
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field  appearance = "outline" class="example-full-width">
+                  <mat-label>Herbi mukellefiyyet</mat-label>
+                  <input matInput [(ngModel)]="formInput.military" >
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field  appearance = "outline" class="example-full-width">
+                  <mat-label>Ünvanı</mat-label>
+                  <input matInput [(ngModel)]="formInput.address" >
+                </mat-form-field>
+              </div>
+            </div>
           </mat-card>
           &nbsp;&nbsp;
         </div>
         <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
-            <button *ngIf="data" type="button" class="btn btn-secondary btn-lg"  (click)="deleteCard()" [disabled]="showSpinner">Sil</button>
+<!--            <button *ngIf="data" type="button" class="btn btn-secondary btn-lg"  (click)="deleteCard()" [disabled]="showSpinner">Sil</button>-->
             <button type="button" class="btn btn-secondary btn-lg" mat-dialog-close >Imtina</button>
             <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
         </div>
