@@ -8,4 +8,5 @@ export interface Person {
   insertdate: Date;
   fin: string;
   email: string;
+  address:string;
 }
