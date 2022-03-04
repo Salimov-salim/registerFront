@@ -1,8 +1,8 @@
 export interface Education{
-  id: number;
-  idperson: number;
-  ideducation: number;
-  iduniversity: number;
-  startdate: Date;
-  edndate: Date;
+  id: any;
+  idperson: any;
+  ideducation: any;
+  iduniversity: any;
+  startdate: any;
+  edndate: any;
 }

@@ -24,6 +24,7 @@ export class ResumesComponent implements OnInit {
     this.personRegistryService.getPersons();
     this.helperService.getUniversities();
     this.helperService.getSocialPages();
+    this.helperService.getEducationTypes();
   }
 
   openAddCardModal(): void {

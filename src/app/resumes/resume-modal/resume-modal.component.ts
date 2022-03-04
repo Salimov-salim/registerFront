@@ -2,29 +2,16 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {PersonRegistryService} from "../../services/person-registry.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {SnackbarService} from "../../services/snackbar.service";
 import {Person} from "../../models/person";
 import {HelperService} from "../../services/helper.service";
-import {Universities} from "../../models/universities";
-import {tap} from "rxjs";
-import {FileService} from "../../services/file.service";
-import {HttpEventType, HttpResponse} from "@angular/common/http";
 import {FileUploadService} from "../../file-upload/file-upload.service";
 import {FileToUpload} from "../../file-upload/file-to-upload";
+import {Education} from "../../models/education";
+import {WorkExperience} from "../../models/work-experience";
 
-export class FormInput {
-  name:any;
-  surname:any;
-  email: any;
-  military:any;
 
-  phone: any;
 
-  address: any;
-  file: any;
-
-}
 
 const MAX_SIZE: number = 2048576;
 @Component({
@@ -35,14 +22,15 @@ const MAX_SIZE: number = 2048576;
 export class ResumeModalComponent implements OnInit {
   selectedFiles?: FileList;
   currentFile?: File;
-  message = '';
-  errorMsg = '';
 
-  formInput!: FormInput;
+
+  formPerson!: Person;
+  formEducation!:Education;
+  formWork!:WorkExperience;
   showSpinner: boolean = false;
   public isSubmit: boolean;
 
-  educationLevel=['Orta','Bakalavr','Magistr','Doktorantura','Aspirantura'];
+  // educationLevel=['Orta','Bakalavr','Magistr','Doktorantura','Aspirantura'];
   universities=this.helperService.universities;
   socialPages=this.helperService.socialPages;
   toShow:boolean=false;
@@ -60,29 +48,30 @@ export class ResumeModalComponent implements OnInit {
 
   constructor(
     private uploadService2: FileUploadService,
-
-
     private dialogRef: MatDialogRef<ResumeModalComponent>,
-    private fb: FormBuilder,
-    private cardService: PersonRegistryService,
+    private personService: PersonRegistryService,
     public helperService: HelperService,
     private snackbarService: SnackbarService,
 
-    @Inject(MAT_DIALOG_DATA) public data: FormInput
+    @Inject(MAT_DIALOG_DATA) public data: Person
   ) { this.isSubmit = false;}
 
   ngOnInit(): void {
-    this.formInput = {
+    // @ts-ignore
+    this.formPerson = {
       name: [this.data?.name || ''],
       surname:[this.data?.surname || ''],
-      military: [this.data?.military || ''],
-      phone: [this.data?.email || ''],
+      militarystate: [this.data?.militarystate|| ''],
+      fathername:[this.data?.fathername || ''],
       email: [this.data?.email || ''],
       address: [this.data?.address || ''],
-      file: '',
-
+      phoneNumber:[this.data?.phoneNumber || ''],
     };
-
+    // @ts-ignore
+    this.formEducation = {
+      ideducation: '',
+      iduniversity:'',
+    };
 
   }
 
@@ -124,7 +113,7 @@ export class ResumeModalComponent implements OnInit {
 
   getSuccess(message: string): void {
     this.snackbarService.createSnackbar('success', message);
-    this.cardService.getPersons();
+    this.personService.getPersons();
     this.showSpinner = false;
     this.dialogRef.close();
   }
@@ -145,6 +134,7 @@ export class ResumeModalComponent implements OnInit {
       this.phone2=true;
     }
   }
+
   newWork(){
     if(this.work2==true && !this.work3){
       this.work3=true;
@@ -218,6 +208,7 @@ export class ResumeModalComponent implements OnInit {
       }
     }
   }
+
   uploadFile(): void {
     this.readAndUploadFile(this.theFile);
   }

@@ -10,8 +10,6 @@ import {Ress} from "../models/ress";
 export class PersonRegistryService {
 
   persons!: Person[];
-  filteredPersons!: Person[];
-  responseForm!:Ress;
 
 
 

@@ -1,12 +1,13 @@
 export interface Person {
-  id: number;
-  name: string;
-  surname: string;
-  fathername: string;
-  militarystate: string;
-  status: string;
-  insertdate: Date;
-  fin: string;
-  email: string;
-  address:string;
+  id: any;
+  name: any;
+  surname: any;
+  fathername: any;
+  militarystate: any;
+  status: any;
+  insertdate: any;
+  fin: any;
+  email: any;
+  address:any;
+  phoneNumber:any;
 }

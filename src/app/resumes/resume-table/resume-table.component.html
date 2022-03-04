@@ -12,6 +12,7 @@
             <th>E-mail</th>
             <th>Herbi mukellefiyyeti</th>
             <th>Status</th>
+            <th>Ünvan</th>
           </tr>
           </thead>
           <tbody>
@@ -24,6 +25,7 @@
             <td>{{person.email || '-------'}}</td>
             <td>{{person.militarystate || '-------'}}</td>
             <td>{{person.status|| '-------'}}</td>
+            <td>{{person.address || '-------'}}</td>
             <button mat-flat-button color="primary" (click)="openUpdateCardModal(person)" style="right: -80px">Duzelis</button>
           </tr>
           </tbody>

@@ -6,37 +6,43 @@
         <div style="margin-top: 50px" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
           <mat-card>
             <div class="row">
-
             <div class="col-md-6">
               <mat-form-field  appearance = "outline" class="example-full-width">
                 <mat-label>Ad</mat-label>
-                <input matInput required  [(ngModel)]="formInput.name" >
+                <input matInput required  [(ngModel)]="formPerson.name" >
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field  appearance = "outline" class="example-full-width">
-                <mat-label>Soyad</mat-label>
-                <input matInput required  [(ngModel)]="formInput.surname" >
+                <mat-label>Soyad </mat-label>
+                <input matInput required  [(ngModel)]="formPerson.surname" >
               </mat-form-field>
             </div>
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
-                  <mat-label>Ata adi</mat-label>
-                  <input matInput [(ngModel)]="formInput.email" >
-                </mat-form-field>
-              </div>
-              <div class="col-md-6">
-                <mat-form-field  appearance = "outline" class="example-full-width">
-                  <mat-label>Herbi mukellefiyyet</mat-label>
-                  <input matInput [(ngModel)]="formInput.military" >
+                  <mat-label>Ata ad </mat-label>
+                  <input matInput [(ngModel)]="formPerson.fathername" >
                 </mat-form-field>
               </div>
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
                   <mat-label>Ünvanı</mat-label>
-                  <input matInput [(ngModel)]="formInput.address" >
+                  <input matInput [(ngModel)]="formPerson.address" >
                 </mat-form-field>
               </div>
+              <div class="col-md-6">
+                <mat-form-field  appearance = "outline" class="example-full-width">
+                  <mat-label>Elektron Ünvan</mat-label>
+                  <input matInput [(ngModel)]="formPerson.email" required email>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field  appearance = "outline" class="example-full-width">
+                  <mat-label>Telefon Nömrəsi</mat-label>
+                  <input matInput [(ngModel)]="formPerson.phoneNumber" required>
+                </mat-form-field>
+              </div>
+
             </div>
           </mat-card>
           &nbsp;&nbsp;
@@ -60,8 +66,8 @@
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil pilləsi </mat-label>
                         <mat-select >
-                          <mat-option *ngFor="let food of this.educationLevel" [value]="food">
-                            {{food}}
+                          <mat-option *ngFor="let type of this.helperService.educationTypes" [value]="type" >
+                            {{type.type}}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
@@ -115,8 +121,8 @@
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil pilləsi </mat-label>
                         <mat-select >
-                          <mat-option *ngFor="let level of educationLevel" [value]="level">
-                            {{level}}
+                          <mat-option *ngFor="let level of this.helperService.educationTypes" [value]="level">
+                            {{level.type}}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>

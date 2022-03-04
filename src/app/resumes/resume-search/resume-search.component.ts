@@ -18,8 +18,8 @@ export class ResumeSearchComponent implements OnInit {
   search(searchText: string): void {
 
     searchText = searchText.toLowerCase();
-    this.personService.filteredPersons = this.personService.persons.filter((person) => {
-      return person.name.toLowerCase().indexOf(searchText) > -1 || (person.name && person.name.toLowerCase().indexOf(searchText) > -1);
-    });
+    // this.personService.filteredPersons = this.personService.persons.filter((person) => {
+    //   return person.name.toLowerCase().indexOf(searchText) > -1 || (person.name && person.name.toLowerCase().indexOf(searchText) > -1);
+    // });
   }
 }
