@@ -4,5 +4,5 @@ export interface Education{
   ideducation: any;
   iduniversity: any;
   startdate: any;
-  edndate: any;
+  enddate: any;
 }

@@ -65,7 +65,7 @@
                     <div class="col-md-6">
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil pilləsi </mat-label>
-                        <mat-select >
+                        <mat-select [(ngModel)]="formEducation.ideducation" name="educationLevel">
                           <mat-option *ngFor="let type of this.helperService.educationTypes" [value]="type" >
                             {{type.type}}
                           </mat-option>
@@ -73,29 +73,26 @@
                       </mat-form-field>
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil ocağı </mat-label>
-                        <mat-select>
+                        <mat-select [(ngModel)]="formEducation.iduniversity" name="educationLevel">
                           <mat-option *ngFor="let uni of this.universities" [value]="uni">
                             {{uni.name}}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
-                      <mat-form-field appearance = "outline" class="example-full-width">
-                        <mat-label>İxtisas</mat-label>
-                        <input matInput >
-                      </mat-form-field>
+
                     </div>
                     <div class="col-md-6">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="startDate">Başlanğıc tarix:</label>
-                            <input type="date" class="form-control" id="startDate">
+                            <input type="date" class="form-control" id="startDate" name="startdate"  [(ngModel)]="formEducation.startdate">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="endDate">Bitmə tarixi:</label>
-                            <input type="date" class="form-control" id="endDate" >
+                            <input type="date" class="form-control" id="endDate"  name="enddate" [(ngModel)]="formEducation.enddate">
                           </div>
                         </div>
                         <br>
@@ -120,37 +117,34 @@
                     <div class="col-md-6">
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil pilləsi </mat-label>
-                        <mat-select >
-                          <mat-option *ngFor="let level of this.helperService.educationTypes" [value]="level">
-                            {{level.type}}
+                        <mat-select [(ngModel)]="formEducation2.ideducation" name="educationLevel2">
+                          <mat-option *ngFor="let type of this.helperService.educationTypes" [value]="type" >
+                            {{type.type}}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil ocağı </mat-label>
-                        <mat-select>
+                        <mat-select [(ngModel)]="formEducation2.iduniversity" name="university">
                           <mat-option *ngFor="let uni of universities" [value]="uni">
-                            {{uni}}
+                            {{uni.name}}
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
-                      <mat-form-field appearance = "outline" class="example-full-width">
-                        <mat-label>İxtisas</mat-label>
-                        <input matInput >
-                      </mat-form-field>
+
                     </div>
                     <div class="col-md-6">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="startDateSecond">Başlanğıc tarix:</label>
-                            <input type="date" class="form-control" id="startDateSecond" >
+                            <input type="date" class="form-control" id="startDateSecond" [(ngModel)]="formEducation2.startdate" name="startdate">
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
                             <label for="endDateSecond">Bitmə tarixi:</label>
-                            <input type="date" class="form-control" id="endDateSecond" >
+                            <input type="date" class="form-control" id="endDateSecond" [(ngModel)]="formEducation2.enddate" name="enddate">
                           </div>
                         </div>
                         <br>

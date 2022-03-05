@@ -26,6 +26,7 @@ export class ResumeModalComponent implements OnInit {
 
   formPerson!: Person;
   formEducation!:Education;
+  formEducation2!:Education;
   formWork!:WorkExperience;
   showSpinner: boolean = false;
   public isSubmit: boolean;
@@ -72,7 +73,11 @@ export class ResumeModalComponent implements OnInit {
       ideducation: '',
       iduniversity:'',
     };
-
+    // @ts-ignore
+    this.formEducation2 = {
+      ideducation: '',
+      iduniversity:'',
+    };
   }
 
 
