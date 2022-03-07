@@ -9,6 +9,10 @@ import {FileUploadService} from "../../file-upload/file-upload.service";
 import {FileToUpload} from "../../file-upload/file-to-upload";
 import {Education} from "../../models/education";
 import {WorkExperience} from "../../models/work-experience";
+import {Cv} from "../../models/cv";
+import {Personsocialnetwork} from "../../models/personsocialnetwork";
+import {HttpEventType, HttpResponse} from "@angular/common/http";
+import {tap} from "rxjs";
 
 
 
@@ -21,20 +25,22 @@ const MAX_SIZE: number = 2048576;
 })
 export class ResumeModalComponent implements OnInit {
   selectedFiles?: FileList;
-  currentFile?: File;
+  loaded = 0;
+  currentFile!: File;
 
 
   formPerson!: Person;
   formEducation!:Education;
   formEducation2!:Education;
   formWork!:WorkExperience;
-  showSpinner: boolean = false;
-  public isSubmit: boolean;
+  formWork2!:WorkExperience;
+  formSociality!:Personsocialnetwork;
+  formSociality2!:Personsocialnetwork;
+  formCV!:Cv;
 
-  // educationLevel=['Orta','Bakalavr','Magistr','Doktorantura','Aspirantura'];
-  universities=this.helperService.universities;
-  socialPages=this.helperService.socialPages;
-  toShow:boolean=false;
+
+  showSpinner: boolean = false;
+  toShow : boolean = false;
 
 
   phone2:boolean=false;
@@ -55,7 +61,7 @@ export class ResumeModalComponent implements OnInit {
     private snackbarService: SnackbarService,
 
     @Inject(MAT_DIALOG_DATA) public data: Person
-  ) { this.isSubmit = false;}
+  ) {}
 
   ngOnInit(): void {
     // @ts-ignore
@@ -78,12 +84,41 @@ export class ResumeModalComponent implements OnInit {
       ideducation: '',
       iduniversity:'',
     };
+    // @ts-ignore
+    this.formWork={
+      workPlace:'',
+      position:'',
+      startdate:'',
+      enddate:''
+    };
+    // @ts-ignore
+    this.formWork2={
+      workPlace:'',
+      position:'',
+      startdate:'',
+      enddate:''
+    };
+    // @ts-ignore
+    this.formSociality={
+      name:'',
+      url:'',
+      idsocialpage:0,
+    };
+    // @ts-ignore
+    this.formSociality2={
+      name:'',
+      url:'',
+      idsocialpage:0,
+    };
   }
 
-
+ write(){
+    console.log("Salam");
+ }
 
   selectFile(event:any) {
     this.selectedFiles = event.target.files;
+    console.log( this.selectedFiles!.item(0))
   }
 
   // addCard(): void {
@@ -164,6 +199,22 @@ export class ResumeModalComponent implements OnInit {
     }
   }
 
+
+  // upload() {
+  //   // @ts-ignore
+  //   this.currentFile = this.selectedFiles!.item(0);
+  //   this.fileService.uploadSingleFile(this.currentFile)
+  //     .pipe(tap(event => {
+  //       if (event.type === HttpEventType.UploadProgress) {
+  //         this.loaded = Math.round(100 * event.loaded / event.total);
+  //       }
+  //     })).subscribe(event => {
+  //     if (event instanceof HttpResponse) {
+  //
+  //       this.fileService.fetchFileNames();
+  //     }
+  //   });
+  // }
 
 
 //  ------------------------

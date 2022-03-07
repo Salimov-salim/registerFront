@@ -74,7 +74,7 @@
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil ocağı </mat-label>
                         <mat-select [(ngModel)]="formEducation.iduniversity" name="educationLevel">
-                          <mat-option *ngFor="let uni of this.universities" [value]="uni">
+                          <mat-option *ngFor="let uni of this.helperService.universities" [value]="uni">
                             {{uni.name}}
                           </mat-option>
                         </mat-select>
@@ -126,7 +126,7 @@
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil ocağı </mat-label>
                         <mat-select [(ngModel)]="formEducation2.iduniversity" name="university">
-                          <mat-option *ngFor="let uni of universities" [value]="uni">
+                          <mat-option *ngFor="let uni of this.helperService.universities" [value]="uni">
                             {{uni.name}}
                           </mat-option>
                         </mat-select>
@@ -180,14 +180,14 @@
             <div class="row">
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
-                  <mat-label>Is</mat-label>
-                  <input matInput>
+                  <mat-label>Is yeri</mat-label>
+                  <input matInput [(ngModel)]="formWork.workPlace" >
                 </mat-form-field>
               </div>
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
                   <mat-label>Sahe</mat-label>
-                  <input matInput>
+                  <input matInput [(ngModel)]="formWork.position" >
                 </mat-form-field>
               </div>
               <div class="col-md-6">
@@ -195,13 +195,13 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="startDateForWork">Başlanğıc tarix:</label>
-                      <input type="date" class="form-control" id="startDateForWork" >
+                      <input type="date" class="form-control" id="startDateForWork" [(ngModel)]="formWork.startdate" >
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="endDateForWork">Bitmə tarixi:</label>
-                      <input type="date" class="form-control" id="endDateForWork" >
+                      <input type="date" class="form-control" id="endDateForWork"  [(ngModel)]="formWork.enddate">
                     </div>
                   </div>
 
@@ -227,13 +227,13 @@
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
                   <mat-label>Is</mat-label>
-                  <input matInput >
+                  <input matInput [(ngModel)]="formWork2.workPlace">
                 </mat-form-field>
               </div>
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
                   <mat-label>Sahe</mat-label>
-                  <input matInput >
+                  <input matInput [(ngModel)]="formWork2.position">
                 </mat-form-field>
               </div>
               <div class="col-md-6">
@@ -241,13 +241,13 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Başlanğıc tarix:</label>
-                      <input type="date" class="form-control"  >
+                      <input type="date" class="form-control"  [(ngModel)]="formWork2.startdate">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Bitmə tarixi:</label>
-                      <input type="date" class="form-control">
+                      <input type="date" class="form-control" [(ngModel)]="formWork2.enddate">
                     </div>
                   </div>
                 </div>
@@ -284,8 +284,8 @@
             <div class="col-md-6">
               <mat-form-field appearance="fill" class="example-full-width">
                 <mat-label>Sosial novu: </mat-label>
-                <mat-select >
-                  <mat-option *ngFor="let sp of this.socialPages" [value]="sp">
+                <mat-select [(ngModel)]="formSociality.idsocialpage">
+                  <mat-option *ngFor="let sp of this.helperService.socialPages" [value]="sp">
                     {{sp.name}}
                   </mat-option>
                 </mat-select>
@@ -294,13 +294,13 @@
             <div class="col-md-6">
               <mat-form-field  appearance = "outline" class="example-full-width">
                 <mat-label>Hesab adı :</mat-label>
-                <input matInput >
+                <input matInput [(ngModel)]="formSociality.name">
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field  appearance = "outline" class="example-full-width">
                 <mat-label>Hesab url :</mat-label>
-                <input matInput >
+                <input matInput [(ngModel)]="formSociality.url">
               </mat-form-field>
             </div>
             <div class="col-md-6">
@@ -312,8 +312,8 @@
             <div class="col-md-6">
               <mat-form-field appearance="fill" class="example-full-width">
                 <mat-label>Sosial novu: </mat-label>
-                <mat-select >
-                  <mat-option *ngFor="let sp of this.socialPages" [value]="sp">
+                <mat-select [(ngModel)]="formSociality2.idsocialpage">
+                  <mat-option *ngFor="let sp of this.helperService.socialPages" [value]="sp">
                     {{sp.name}}
                   </mat-option>
                 </mat-select>
@@ -322,13 +322,13 @@
             <div class="col-md-6">
               <mat-form-field  appearance = "outline" class="example-full-width">
                 <mat-label>Hesab adı :</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]="formSociality2.name">
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field  appearance = "outline" class="example-full-width">
                 <mat-label>Hesab url :</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]="formSociality2.url">
               </mat-form-field>
             </div>
             <div class="col-md-6">
@@ -359,16 +359,16 @@
                 <mat-card-header>
                   <mat-card-title>Elektron materiali daxil edin</mat-card-title>
                   <mat-card-subtitle>
-                    <label>Select a File (&lt; 1MB)</label><br/>
-                    <input type="file" (change)="onFileChange($event)" /><br/>
-                    <button (click)="uploadFile()" [disabled]="!theFile">Upload File</button><br/><br/>
-<!--                    <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" ngModel/>-->
-<!--                    <mat-form-field class="example-full-width" (click)="fileInput.click()">-->
-<!--                      <input matInput placeholder="Sənədlər..."  value="{{fileInput.value.substr(fileInput.value.lastIndexOf('\\')+1)}}">-->
-<!--                      <mat-icon matSuffix>folder_open</mat-icon>-->
-<!--                    </mat-form-field>-->
-<!--                    &nbsp;-->
-<!--                    <button mat-raised-button color="primary" [disabled]="!selectedFiles"  (click)="upload()">Yüklə</button>-->
+
+<!--                    <input type="file" (change)="onFileChange($event)" /><br/>-->
+<!--                    <button (click)="uploadFile()" [disabled]="!theFile">Upload File</button><br/><br/>-->
+                    <input #fileInput type="file" (change)="selectFile($event)" style="display:none;" ngModel/>
+                    <mat-form-field class="example-full-width" (click)="fileInput.click()">
+                      <input matInput placeholder="Sənədlər..."  value="{{fileInput.value.substr(fileInput.value.lastIndexOf('\\')+1)}}">
+                      <mat-icon matSuffix>folder_open</mat-icon>
+                    </mat-form-field>
+                    &nbsp;
+                    <button mat-raised-button color="primary" [disabled]="!selectedFiles"  (click)="write()">Yüklə</button>
                   </mat-card-subtitle>
                 </mat-card-header>
               </mat-card>
