@@ -19,9 +19,7 @@
       <div class="col-12" *ngIf="personRegistryService.persons?.length === 0">
         <span>Hazırda məlumat bazasında hec bir şəxs haqqında informasiya yoxdur. <a class="text-primary" (click)="openAddCardModal()">Buraya klikləyin</a> yeni şəxsi daxil edin.</span>
       </div>
-
-        <app-resume-table [persons]="personRegistryService.persons" ></app-resume-table>
-
+        <app-resume-table [persons]="personRegistryService.filteredPersons" ></app-resume-table>
       </div>
     </div>
 

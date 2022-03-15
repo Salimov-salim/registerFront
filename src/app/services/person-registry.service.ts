@@ -10,6 +10,7 @@ import {Ress} from "../models/ress";
 export class PersonRegistryService {
 
   persons!: Person[];
+  filteredPersons!:Person[];
 
 
 
@@ -22,38 +23,23 @@ export class PersonRegistryService {
   getPersons(): void {
     this.http.get<Person[]>('http://localhost:8085/persons').subscribe((res:Person[])=>{
       console.log(res)
-      this.persons = res;
+      this.persons = this.filteredPersons =res;
     })
 
   }
-  // getCards(): void {
-  //   this.http.get<Ress>('http://localhost:8085/persons')
-  //     .subscribe((res: Ress) => {
-  //       this.ress = res;
-  //     });
-  // }
 
-  addCard(card: Person): Observable<any> {
-    return this.http.post(this.apiUrl + '/cards', card);
+
+  addPerson(person: Person): Observable<any> {
+    return this.http.post(this.apiUrl + '/person', person);
   }
 
-  updateCard(card: Person, cardId: number): Observable<any> {
-    return this.http.put(this.apiUrl + '/cards/' + cardId, card);
+  updatePerson(person: Person, personID: number): Observable<any> {
+    return this.http.put(this.apiUrl + '/person/' + personID, person);
   }
 
-  deleteCard(cardId: number): Observable<any> {
-    return this.http.delete(this.apiUrl + '/cards/' + cardId);
+  deletePerson(personId: number): Observable<any> {
+    return this.http.delete(this.apiUrl + '/person/' + personId);
   }
 
-  getPerson(): void {
-    this.http.get<Person>('http://localhost:8085/persons/1')
-      .subscribe((res: Person) => {
-        return res;
-      });
-  }
-
-  getPersonByID(): Observable<Person>{
-    return this.http.get<Person>("http://localhost:8085/persons/2");
-  };
 
 }

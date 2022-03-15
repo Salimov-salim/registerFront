@@ -27,6 +27,8 @@ export class ResumeModalComponent implements OnInit {
   selectedFiles?: FileList;
   loaded = 0;
   currentFile!: File;
+  fileName!:string;
+  url:any;
 
 
   formPerson!: Person;
@@ -110,6 +112,11 @@ export class ResumeModalComponent implements OnInit {
       url:'',
       idsocialpage:0,
     };
+
+    // @ts-ignore
+    this.formCV={
+      content:''
+    }
   }
 
  write(){
@@ -117,9 +124,63 @@ export class ResumeModalComponent implements OnInit {
  }
 
   selectFile(event:any) {
-    this.selectedFiles = event.target.files;
-    console.log( this.selectedFiles!.item(0))
+
+    if(event.target.files[0].size > 5242880 ){
+      this.getError('DİQQƏT !!! File ölçüsü 5MB-dan artıq olmamalıdır !')
+    }else{
+      this.selectedFiles = event.target.files;
+      // console.log( this.selectedFiles!.item(0))
+      this.fileName = event.target.files[0].name;
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (_event) => {
+        this.url = reader.result;
+      }
+      let lenOfName = this.fileName.length;
+      this.fileName = this.fileName.substring(0, this.fileName.lastIndexOf("."));
+    }
   }
+
+  uploadFile(modal){
+      if(this.url != null){
+          this.showSpinner =true;
+
+          let fileContent:string;
+          var contentLength = (this.url.length);
+          fileContent = this.url.substring(this.url.indexOf(",") + 1, contentLength);
+          this._responseTargetCase.targetCase.idUser.iduserimage = null;
+          this.targetCase_TcDocument.documentname = this.fileName;
+          this.targetCase_TcDocument.docextension = this.fileExtension;
+          this.targetCase_TcDocument.idtargetcase = this._responseTargetCase.targetCase;
+          this.targetCase_TcDocument.idtcdocument.content = fileContent;
+          this.targetCaseService.saveTargetCaseTcDocument(this.targetCase_TcDocument).subscribe(
+            (data)=>{
+              if (data.message == null) {
+                this.showDocComp = true;
+                data.fileExtIcon = this.setFileIcon(data.docextension);
+                data.fileSize = this.fileSizeMaker(data.fileSize);
+                data.idtcdocument.content = this.setFilePrefix(data.docextension) + data.idtcdocument.content;
+                this._responseTargetCase.targetcaseTcdocumentList.unshift(data);
+                this.resetFileInput();
+                this.successSwal('UĞURLU','');
+              }else{
+                this.warningSwal('DİQQƏT !', data.message);
+              }
+              this.showSpinner =false;
+            }, (error) => {
+              this.showSpinner = false;
+            }, ()=>{}
+          );
+          modal.hide();
+
+      }else{
+        modal.hide();
+        this.getError("Mütləq file seçilməlidir!!!");
+      }
+
+  }
+
+
 
   // addCard(): void {
   //   this.showSpinner = true;
@@ -131,25 +192,7 @@ export class ResumeModalComponent implements OnInit {
   //     });
   // }
 
-  // updateCard(): void {
-  //   this.showSpinner = true;
-  //   this.cardService.updateCard(this.formInput., this.data.id)
-  //     .subscribe((res: any) => {
-  //       this.getSuccess(res || 'Şəxs haqqında məlumat uğurla dəyişdirildi');
-  //     }, (err: any) => {
-  //       this.getError(err.message || 'Uğursuz əməliyyat');
-  //     });
-  // }
 
-  // deleteCard(): void {
-  //   this.showSpinner = true;
-  //   this.cardService.deleteCard(this.data.id)
-  //     .subscribe((res: any) => {
-  //       this.getSuccess(res || 'Şəxs haqqında məlumat uğurla silindi');
-  //     }, (err: any) => {
-  //       this.getError(err.message || 'Uğursuz əməliyyat');
-  //     });
-  // }
 
   getSuccess(message: string): void {
     this.snackbarService.createSnackbar('success', message);
@@ -162,9 +205,6 @@ export class ResumeModalComponent implements OnInit {
     this.snackbarService.createSnackbar('error', message);
     this.showSpinner = false;
   }
-
-
-
 
 
   newPhone(){
@@ -222,33 +262,33 @@ export class ResumeModalComponent implements OnInit {
   theFile: any = null;
   messages: string[] = [];
 
-  private readAndUploadFile(theFile: any) {
-    let file = new FileToUpload();
-
-    // Set File Information
-    file.fileName = theFile.name;
-    file.fileSize = theFile.size;
-    file.fileType = theFile.type;
-    file.lastModifiedTime = theFile.lastModified;
-    file.lastModifiedDate = theFile.lastModifiedDate;
-
-    // Use FileReader() object to get file to upload
-    // NOTE: FileReader only works with newer browsers
-    let reader= new FileReader();
-
-    // Setup onload event for reader
-    reader.onload = () => {
-      // Store base64 encoded representation of file
-      file.fileAsBase64 = reader.result!.toString();
-
-      // POST to server
-      this.uploadService2.uploadFile(file).subscribe(resp => {
-        this.messages.push("Upload complete"); });
-    }
-
-    // Read the file
-    reader.readAsDataURL(theFile);
-  }
+  // private readAndUploadFile(theFile: any) {
+  //   let file = new FileToUpload();
+  //
+  //   // Set File Information
+  //   file.fileName = theFile.name;
+  //   file.fileSize = theFile.size;
+  //   file.fileType = theFile.type;
+  //   file.lastModifiedTime = theFile.lastModified;
+  //   file.lastModifiedDate = theFile.lastModifiedDate;
+  //
+  //   // Use FileReader() object to get file to upload
+  //   // NOTE: FileReader only works with newer browsers
+  //   let reader= new FileReader();
+  //
+  //   // Setup onload event for reader
+  //   reader.onload = () => {
+  //     // Store base64 encoded representation of file
+  //     file.fileAsBase64 = reader.result!.toString();
+  //
+  //     // POST to server
+  //     this.uploadService2.uploadFile(file).subscribe(resp => {
+  //       this.messages.push("Upload complete"); });
+  //   }
+  //
+  //   // Read the file
+  //   reader.readAsDataURL(theFile);
+  // }
 
   onFileChange(event:any) {
     this.theFile = null;
@@ -265,8 +305,8 @@ export class ResumeModalComponent implements OnInit {
     }
   }
 
-  uploadFile(): void {
-    this.readAndUploadFile(this.theFile);
-  }
+  // uploadFile(): void {
+  //   this.readAndUploadFile(this.theFile);
+  // }
 
 }
