@@ -1,13 +1,13 @@
-export interface Person {
-  id: any;
-  name: any;
-  surname: any;
-  fathername: any;
-  militarystate: any;
-  status: any;
-  insertdate: any;
-  fin: any;
-  email: any;
-  address:any;
-  phoneNumber:any;
+export class Person {
+  id?: number;
+  name?: string;
+  surname?: string;
+  fathername?: string;
+  militarystate?: string;
+  status?: number;
+  insertdate?: Date;
+  fin?: string;
+  email?: string;
+  address?:string;
+  phoneNumber?:string;
 }

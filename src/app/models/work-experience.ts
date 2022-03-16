@@ -1,7 +1,8 @@
-export interface WorkExperience {
-  workPlace:any;
-  position:any;
-  startdate:any;
-  enddate:any;
-  status:any;
+export class WorkExperience {
+  id ?:number
+  workPlace ?:string;
+  position ?:string;
+  startdate ?:Date;
+  enddate ?:Date;
+  status ?:string;
 }

@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Person} from "../models/person";
 import {catchError, map, Observable} from "rxjs";
 import {Ress} from "../models/ress";
+import {Sender} from "../models/sender";
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class PersonRegistryService {
   }
 
 
-  addPerson(person: Person): Observable<any> {
-    return this.http.post(this.apiUrl + '/person', person);
+  addPerson(OBJ: Sender): Observable<any> {
+    return this.http.post('http://localhost:8085/addPerson', OBJ);
   }
 
   updatePerson(person: Person, personID: number): Observable<any> {

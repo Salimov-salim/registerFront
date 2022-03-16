@@ -1,4 +1,4 @@
-export interface Educationtype {
-  id : number;
-  type : string;
+export class Educationtype {
+  id ?: number;
+  type ?: string;
 }

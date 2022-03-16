@@ -1,4 +1,4 @@
-export interface Socialtypes {
-  id: number;
-  name: string;
+export class Socialtypes {
+  id ?: number;
+  name ?: string;
 }
