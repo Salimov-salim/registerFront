@@ -23,6 +23,7 @@ const MAX_SIZE: number = 2048576;
   templateUrl: './resume-modal.component.html',
   styleUrls: ['./resume-modal.component.scss']
 })
+
 export class ResumeModalComponent implements OnInit {
   selectedFiles?: FileList;
   loaded = 0;
@@ -66,7 +67,7 @@ export class ResumeModalComponent implements OnInit {
 
   ) {
     this.CvDocument=new Document();
-    // this.formPerson=new Person();
+    this.formPerson=new Person();
     this.formEducation=new Education();
     this.formEducation2=new Education();
     this.formWork=new WorkExperience();
@@ -183,6 +184,9 @@ export class ResumeModalComponent implements OnInit {
   deletePerson(){
       console.log(this.data.id);
   }
+
+
+
 
 }
 

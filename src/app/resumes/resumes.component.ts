@@ -5,6 +5,7 @@ import {ResumeModalComponent} from "./resume-modal/resume-modal.component";
 import {Ress} from "../models/ress";
 import {Observable} from "rxjs";
 import {HelperService} from "../services/helper.service";
+import {Document} from "../models/document";
 
 @Component({
   selector: 'app-resumes',
@@ -15,6 +16,7 @@ export class ResumesComponent implements OnInit {
   // salim!:Observable<Ress>;
 
   constructor(
+    public personService:PersonRegistryService,
     public dialog: MatDialog,
     public personRegistryService: PersonRegistryService,
     public helperService:HelperService
@@ -30,4 +32,6 @@ export class ResumesComponent implements OnInit {
   openAddCardModal(): void {
     this.dialog.open(ResumeModalComponent);
   }
+
+
 }

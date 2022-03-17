@@ -4,6 +4,7 @@ import {Person} from "../models/person";
 import {catchError, map, Observable} from "rxjs";
 import {Ress} from "../models/ress";
 import {Sender} from "../models/sender";
+import {Document} from "../models/document";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PersonRegistryService {
 
   persons!: Person[];
   filteredPersons!:Person[];
-
+  cv!:Document;
 
 
   constructor(
@@ -29,6 +30,13 @@ export class PersonRegistryService {
 
   }
 
+  getCV():void{
+    this.http.get<Document>('http://localhost:8085/cv').subscribe((res:Document)=>{
+      console.log(res)
+      this.cv= res;
+    })
+
+  }
 
   addPerson(OBJ: Sender): Observable<any> {
     return this.http.post('http://localhost:8085/addPerson', OBJ);
