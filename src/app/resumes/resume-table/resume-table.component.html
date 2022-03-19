@@ -13,6 +13,7 @@
             <th>Herbi mukellefiyyeti</th>
             <th>Status</th>
             <th>Ünvan</th>
+            <th>IDcv</th>
             <th></th>
             <th></th>
 
@@ -29,6 +30,12 @@
             <td>{{person.militarystate || '-------'}}</td>
             <td>{{person.status|| '-------'}}</td>
             <td>{{person.address || '-------'}}</td>
+            <td>
+              <button class="btn btn-success"><i class="fa fa-download" style="background-color: blueviolet"></i>Yüklə</button>
+<!--              <button class="btn btn-info" data-toggle="modal">-->
+<!--                {{person.idcv!.id || '-&#45;&#45;&#45;&#45;&#45;&#45;'}}-->
+<!--              </button>-->
+            </td>
             <td style="width:5px">
 
 <!--              <input type="hidden" name="id" value="<%=u.getId()%>"/>-->
@@ -42,7 +49,7 @@
 <!--              <form action="userdetail" method="GET">-->
 <!--                <input type="hidden" name="id" value="<%=u.getId()%>"/>-->
 <!--                <input type="hidden" name="action" value="update"/>-->
-                <button class="btn btn-dark"  type="submit" value="update"  (click)="openUpdateCardModal(person)">
+                <button class="btn btn-warning"  type="submit" value="update"  (click)="openUpdateCardModal(person)">
 <!--                  <i class="fas fa-pen-square">Duzelis</i>-->
                   Duzelis
                 </button>

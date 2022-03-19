@@ -1,3 +1,5 @@
+import {Document} from "./document";
+
 export class Person {
   id?: number;
   name?: string;
@@ -10,4 +12,5 @@ export class Person {
   email?: string;
   address?:string;
   phoneNumber?:string;
+  idcv?:Document;
 }
