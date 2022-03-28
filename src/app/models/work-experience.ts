@@ -1,8 +1,9 @@
 export class WorkExperience {
   id ?:number
-  workPlace ?:string;
   position ?:string;
+  workplace ?:string;
+  status ?:string;
   startdate ?:Date;
   enddate ?:Date;
-  status ?:string;
+
 }

@@ -37,7 +37,7 @@ import {AuthenticationInterceptor} from "./_helpers/authentication.interceptor";
   providers: [
     {
       provide: 'apiUrl',
-      useValue: 'https://demo.limantech.com/cards/public/api'
+      useValue: "http://localhost:8085"
     }
     // },{
     //   provide: HTTP_INTERCEPTORS,

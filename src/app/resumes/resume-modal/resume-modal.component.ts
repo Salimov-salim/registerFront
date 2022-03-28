@@ -83,7 +83,7 @@ export class ResumeModalComponent implements OnInit {
     this.formPerson = {
       name: this.data?.name || '',
       surname:this.data?.surname || '',
-      militarystate: this.data?.militarystate|| '',
+      militarystate: this.data?.militarystate || false,
       fathername:this.data?.fathername || '',
       email: this.data?.email || '',
       address: this.data?.address || '',
@@ -118,6 +118,7 @@ export class ResumeModalComponent implements OnInit {
 
   addPerson(): void {
       this.showSpinner = true;
+
       this.sender.person=this.formPerson;
       this.sender.workExperience=this.formWork;
       this.sender.workExperience2=this.formWork2;
@@ -129,6 +130,7 @@ export class ResumeModalComponent implements OnInit {
       this.sender.additionalinformation=this.formAdditionalInformation;
       this.personService.addPerson(this.sender)
         .subscribe((res: any) => {
+          console.log(res)
           this.getSuccess(res + 'Şəxs haqqında məlumat uğurla əlavə olundu');
         }, (err: any) => {
           this.getError(err.message + 'Uğursuz 1');
@@ -183,6 +185,21 @@ export class ResumeModalComponent implements OnInit {
 
   deletePerson(){
       console.log(this.data.id);
+  }
+
+  updatePerson(): void {
+    this.formPerson.id=this.data.id;
+    this.sender.person=this.formPerson;
+    this.sender.workExperience=this.formWork;
+    this.sender.additionalinformation=this.formAdditionalInformation;
+    // this.formPerson.id=this.data.id;
+    this.personService.updatePerson(this.sender)
+      .subscribe((res: any) => {
+        console.log(res)
+        this.getSuccess(res || 'Person succesfully updated.');
+      }, (err: any) => {
+        this.getError(err.message || 'Error happened when update person details');
+      });
   }
 
 

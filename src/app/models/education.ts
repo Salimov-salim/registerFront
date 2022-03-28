@@ -1,6 +1,6 @@
 export class Education{
   id?: number;
-  ideducation?: number;
+  ideducationtype?: number;
   iduniversity?: number;
   startdate?: Date;
   enddate?: Date;

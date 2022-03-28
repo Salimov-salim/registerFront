@@ -42,7 +42,7 @@
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
                   <mat-label>Telefon Nömrəsi</mat-label>
-                  <input matInput [(ngModel)]="formPerson.phoneNumber" required>
+                  <input matInput [(ngModel)]="formPerson.phoneNumber"required>
                 </mat-form-field>
               </div>
               <div class="col-md-6">
@@ -51,12 +51,18 @@
                   <textarea matInput [(ngModel)]="formAdditionalInformation.note" ></textarea>
                 </mat-form-field>
               </div>
+              <div class=" col-md-6 custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="formPerson.militarystate" >
+                <label class="custom-control-label" for="customCheck1">Hərbi mükəlləfiyyət</label>
+              </div>
             </div>
           </mat-card>
           &nbsp;&nbsp;
         </div>
         <div class="col-sm-12 centered-content" align="end" style="padding-top:50px">
-            <button *ngIf="data" type="button" class="btn btn-secondary btn-lg btn-danger"  (click)="deletePerson()" [disabled]="showSpinner">Sil</button>
+
+<!--          <button *ngIf="data" type="button" class="btn btn-secondary btn-lg btn-danger"  (click)="deletePerson()" [disabled]="showSpinner">Sil</button>-->
+            <button *ngIf="data" type="button" class="btn btn-secondary btn-lg btn-info"  (click)="updatePerson()" [disabled]="showSpinner">Düzəliş et</button>
             <button type="button" class="btn btn-secondary btn-lg" mat-dialog-close >Imtina</button>
             <button type="button" class="btn btn-primary btn-lg" awNextStep>Növbəti</button>
         </div>
@@ -73,7 +79,7 @@
                     <div class="col-md-6">
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil pilləsi </mat-label>
-                        <mat-select [(ngModel)]="formEducation.ideducation" name="educationLevel">
+                        <mat-select [(ngModel)]="formEducation.ideducationtype" name="educationLevel">
                           <mat-option *ngFor="let type of this.helperService.educationTypes" [value]="type" >
                             {{type.type}}
                           </mat-option>
@@ -125,7 +131,7 @@
                     <div class="col-md-6">
                       <mat-form-field appearance="fill" class="example-full-width">
                         <mat-label>Təhsil pilləsi </mat-label>
-                        <mat-select [(ngModel)]="formEducation2.ideducation" name="educationLevel2">
+                        <mat-select [(ngModel)]="formEducation2.ideducationtype" name="educationLevel2">
                           <mat-option *ngFor="let type of this.helperService.educationTypes" [value]="type" >
                             {{type.type}}
                           </mat-option>
@@ -189,7 +195,7 @@
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
                   <mat-label>Is yeri</mat-label>
-                  <input matInput [(ngModel)]="formWork.workPlace" >
+                  <input matInput [(ngModel)]="formWork.workplace" >
                 </mat-form-field>
               </div>
               <div class="col-md-6">
@@ -231,11 +237,11 @@
         </div>
         <div  *ngIf="work2" style="margin-top: 50px" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
           <mat-card>
-            <div class="row" >
+            <div class="row">
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
                   <mat-label>Is</mat-label>
-                  <input matInput [(ngModel)]="formWork2.workPlace">
+                  <input matInput [(ngModel)]="formWork2.workplace">
                 </mat-form-field>
               </div>
               <div class="col-md-6">

@@ -42,8 +42,8 @@ export class PersonRegistryService {
     return this.http.post('http://localhost:8085/addPerson', OBJ);
   }
 
-  updatePerson(person: Person, personID: number): Observable<any> {
-    return this.http.put(this.apiUrl + '/person/' + personID, person);
+  updatePerson(person: Sender): Observable<any> {
+    return this.http.post(this.apiUrl + '/updatePerson', person);
   }
 
   deletePerson(personId: number): Observable<any> {

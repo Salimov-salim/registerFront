@@ -1,11 +1,11 @@
 import {Document} from "./document";
 
 export class Person {
-  id?: number;
+  id!: number;
   name?: string;
   surname?: string;
   fathername?: string;
-  militarystate?: string;
+  militarystate?: boolean;
   status?: number;
   insertdate?: Date;
   fin?: string;
