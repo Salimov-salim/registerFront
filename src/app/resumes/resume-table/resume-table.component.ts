@@ -36,7 +36,8 @@ export class ResumeTableComponent implements OnInit {
   }
 
   deletePerson(person:Person){
-    this.personRegistryService.deletePerson(Number(person.id));
+    console.log(person.id);
+    this.personRegistryService.deletePerson(person.id);
   }
 
   // downloadFile(file : Document) {

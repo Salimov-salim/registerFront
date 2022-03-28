@@ -46,8 +46,13 @@ export class PersonRegistryService {
     return this.http.post(this.apiUrl + '/updatePerson', person);
   }
 
-  deletePerson(personId: number): Observable<any> {
-    return this.http.delete(this.apiUrl + '/person/' + personId);
+  deletePerson(personID: number): Observable<any> {
+    console.log(personID);
+    return this.http.get('http://localhost:8085/deletePerson/${personID}').pipe(
+      map((data) => {
+        return data;
+      })
+    );
   }
 
 
