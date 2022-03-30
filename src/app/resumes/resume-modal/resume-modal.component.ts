@@ -183,9 +183,6 @@ export class ResumeModalComponent implements OnInit {
     }
   }
 
-  deletePerson(){
-      console.log(this.data.id);
-  }
 
   updatePerson(): void {
     this.formPerson.id=this.data.id;
