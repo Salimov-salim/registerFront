@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {PersonRegistryService} from "../../services/person-registry.service";
+import {DomSanitizer} from "@angular/platform-browser";
+
+
+
+
 
 @Component({
   selector: 'app-home',
@@ -6,10 +12,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  library:any;
+  constructor(
+    public personService:PersonRegistryService
+  ) {
 
-  constructor() { }
+  }
+
 
   ngOnInit(): void {
+    this.personService.getMapFromElgun();
   }
 
 }

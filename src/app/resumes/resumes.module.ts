@@ -28,7 +28,11 @@ import {NgModule} from "@angular/core";
     ResumeItemComponent,
     ResumeModalComponent,
     ResumeSearchComponent,
-    ResumeTableComponent
+    ResumeTableComponent,
+
+  ],
+  exports: [
+
   ],
   imports: [
     CommonModule,

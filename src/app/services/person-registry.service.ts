@@ -14,7 +14,7 @@ export class PersonRegistryService {
   persons!: Person[];
   filteredPersons!:Person[];
   cv!:Document;
-
+  library!:any;
 
   constructor(
     @Inject('apiUrl') private apiUrl: string,
@@ -51,6 +51,14 @@ export class PersonRegistryService {
     this.http.get('http://localhost:8085/deletePerson/'+personID).subscribe((res:any)=>{
       console.log(res);
     });
+  }
+
+  getMapFromElgun():any{
+    this.http.get('http://10.13.2.201:5000/',{responseType: 'text'}).subscribe((res:any)=>{
+      this.library=res;
+      console.log(this.library);
+
+    })
   }
 
 // .pipe(

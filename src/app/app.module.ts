@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule, Sanitizer} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
 import {AuthenticationInterceptor} from "./_helpers/authentication.interceptor";
+import {ResumesModule} from "./resumes/resumes.module";
+
+
 
 @NgModule({
   declarations: [
@@ -22,28 +25,28 @@ import {AuthenticationInterceptor} from "./_helpers/authentication.interceptor";
     HomeComponent,
     LoginComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatSnackBarModule,
-    HttpClientModule,
-    MatToolbarModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatCardModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        MatSnackBarModule,
+        HttpClientModule,
+        MatToolbarModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        ResumesModule,
+
+
+    ],
   providers: [
     {
       provide: 'apiUrl',
       useValue: "http://localhost:8085"
-    }
-    // },{
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthenticationInterceptor,
-    //   multi: true
-    // }
+    },
+
+
   ],
   bootstrap: [AppComponent]
 })
