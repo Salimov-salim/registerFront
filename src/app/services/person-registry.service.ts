@@ -1,5 +1,5 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Person} from "../models/person";
 import {catchError, map, Observable} from "rxjs";
 import {Ress} from "../models/ress";
@@ -12,28 +12,31 @@ import {Document} from "../models/document";
 export class PersonRegistryService {
 
   persons!: Person[];
-  filteredPersons!:Person[];
-  cv!:Document;
-  library!:any;
+  filteredPersons!: Person[];
+  cv!: Document;
+
+
 
   constructor(
     @Inject('apiUrl') private apiUrl: string,
-    private http:HttpClient
-  ) { }
+    private http: HttpClient
+  ) {
+  }
 
 
   getPersons(): void {
-    this.http.get<Person[]>('http://localhost:8085/persons').subscribe((res:Person[])=>{
+    this.http.get<Person[]>('http://localhost:8085/persons').subscribe((res: Person[]) => {
       console.log(res)
-      this.persons = this.filteredPersons =res;
+      this.persons = this.filteredPersons = res;
     })
 
   }
 
-  getCV():void{
-    this.http.get<Document>('http://localhost:8085/cv').subscribe((res:Document)=>{
+  getCV(): void {
+    this.http.get<Document>('http://localhost:8085/cv',
+    ).subscribe((res: Document) => {
       console.log(res)
-      this.cv= res;
+      this.cv = res;
     })
 
   }
@@ -48,22 +51,9 @@ export class PersonRegistryService {
 
   deletePerson(personID: number): any {
     console.log('s')
-    this.http.get('http://localhost:8085/deletePerson/'+personID).subscribe((res:any)=>{
+    this.http.get('http://localhost:8085/deletePerson/' + personID).subscribe((res: any) => {
       console.log(res);
     });
   }
 
-  getMapFromElgun():any{
-    this.http.get('http://10.13.2.201:5000/',{responseType: 'text'}).subscribe((res:any)=>{
-      this.library=res;
-      console.log(this.library);
-
-    })
-  }
-
-// .pipe(
-//     map((data) => {
-//   return data;
-// })
-// )
 }

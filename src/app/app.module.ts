@@ -13,32 +13,31 @@ import { LoginComponent } from './components/login/login.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
-import {AuthenticationInterceptor} from "./_helpers/authentication.interceptor";
 import {ResumesModule} from "./resumes/resumes.module";
 
 
 
+
+
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    LoginComponent
-  ],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        HomeComponent,
+        LoginComponent
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         MatSnackBarModule,
-        HttpClientModule,
         MatToolbarModule,
         BrowserAnimationsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCardModule,
         ResumesModule,
-
-
     ],
   providers: [
     {

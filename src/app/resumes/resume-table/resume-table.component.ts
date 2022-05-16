@@ -7,6 +7,7 @@ import {Document} from "../../models/document";
 
 import * as fileSaver from 'file-saver';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-resume-table',
@@ -16,18 +17,14 @@ import {HttpClient} from "@angular/common/http";
 export class ResumeTableComponent implements OnInit {
 
   @Input() persons!:Person[]
+
   constructor(
     private _http:HttpClient,
     private dialog: MatDialog,
     private personRegistryService :PersonRegistryService,
-  ) {
-  }
+  ) {}
 
-  ngOnInit(
-
-  ): void {
-
-  }
+  ngOnInit(): void {}
 
   openUpdateCardModal(person1: Person): void {
     this.dialog.open(ResumeModalComponent, {
@@ -41,17 +38,19 @@ export class ResumeTableComponent implements OnInit {
     this.personRegistryService.getPersons();
   }
 
-  // downloadFile(file : Document) {
-  //   this.download(file.content!).subscribe(response => {
-  //     let blob:any = new Blob([response], { type: 'text/json; charset=utf-8' });
-  //     const url = window.URL.createObjectURL(blob);
-  //     // fileSaver.saveAs(blob, file.docname+''+file.docextension);
-  //   }), error => console.log('Error downloading the file'),
-  //     () => console.info('File downloaded successfully');
-  // }
-  //
-  // download(url : string): any {
-  //   return this._http.get(url, {responseType: 'blob'});
-  // }
+  downloadCV(file :Person){
+    // console.log(file)
+    this.downloadFile(file.idcv!.content).subscribe(response => {
+      console.log(response)
+      let blob:any = new Blob([response], { type: 'text/json; charset=utf-8' });
+      const url = window.URL.createObjectURL(blob);
+      fileSaver.saveAs(blob, file.name+''+file.surname+''+file.fathername+".pdf");
+    })
+  }
 
+  downloadFile(content:string){
+    // console.log(content)
+    let s ='data:application/pdf;base64,'+content
+    return this._http.get(s, {responseType: 'blob'});
+  }
 }

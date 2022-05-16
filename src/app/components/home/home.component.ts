@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {PersonRegistryService} from "../../services/person-registry.service";
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import {i18nMetaToJSDoc} from "@angular/compiler/src/render3/view/i18n/meta";
 
 
 
@@ -11,17 +12,20 @@ import {DomSanitizer} from "@angular/platform-browser";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  library:any;
-  constructor(
-    public personService:PersonRegistryService
-  ) {
+export class HomeComponent implements OnInit{
 
-  }
+
+
+  constructor(
+    public personService:PersonRegistryService,
+  ) {}
+
+  public htmlSource!:SafeResourceUrl;
 
 
   ngOnInit(): void {
-    this.personService.getMapFromElgun();
+    // this.personService.getMapFromElgun();
+    // this.htmlSource=this.sanitarizer.bypassSecurityTrustHtml('assets/htmls/Test1.html');
   }
 
 }

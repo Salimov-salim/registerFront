@@ -41,8 +41,8 @@
               </div>
               <div class="col-md-6">
                 <mat-form-field  appearance = "outline" class="example-full-width">
-                  <mat-label>Telefon Nömrəsi</mat-label>
-                  <input matInput [(ngModel)]="formPerson.phoneNumber"required>
+                  <mat-label >Telefon Nömrəsi</mat-label>
+                  <input matInput placeholder="994 xxx xx xx" pattern="[0-9]{10}" maxlength="10" minlength="10"  [(ngModel)]="formPerson.phonenumber" required>
                 </mat-form-field>
               </div>
               <div class="col-md-6">
@@ -51,10 +51,26 @@
                   <textarea matInput [(ngModel)]="formAdditionalInformation.note" ></textarea>
                 </mat-form-field>
               </div>
-              <div class=" col-md-6 custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="formPerson.militarystate" >
-                <label class="custom-control-label" for="customCheck1">Hərbi mükəlləfiyyət</label>
+              <div class="col-md-6">
+                <div class="row" style="padding-left: 20px;padding-top: 15px">
+                  <div class="form-check form-switch col-md-6">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault1" [(ngModel)]="formPerson.militarystate">
+                    <label class="form-check-label" for="flexSwitchCheckDefault1">Hərbi mükəlləfiyyət</label>
+                  </div>
+                  <div class="form-check form-switch col-md-6">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2" [(ngModel)]="formPerson.status" [defaultValue]="true">
+                    <label class="form-check-label" for="flexSwitchCheckDefault2">Status</label>
+                  </div>
+                </div>
+
+
+
               </div>
+
+<!--              <div class=" col-md-6 custom-control custom-checkbox">-->
+<!--                <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="formPerson.militarystate" >-->
+<!--                <label class="custom-control-label" for="customCheck1">Hərbi mükəlləfiyyət</label>-->
+<!--              </div>-->
             </div>
           </mat-card>
           &nbsp;&nbsp;
@@ -373,13 +389,13 @@
                   <mat-card-title>Elektron materiali daxil edin</mat-card-title>
                   <mat-card-subtitle>
 
-                    <input #fileInput type="file" (change)="selectFile($event)"  style="display:none;" ngModel/>
+                    <input #fileInput type="file" accept="application/pdf"  (change)="selectFile($event)"  style="display:none;" ngModel/>
                     <mat-form-field class="example-full-width" (click)="fileInput.click()">
                       <input matInput placeholder="Sənədlər..."  value="{{fileInput.value.substr(fileInput.value.lastIndexOf('\\')+1)}}">
                       <mat-icon matSuffix>folder_open</mat-icon>
                     </mat-form-field>
                     &nbsp;
-                    <button mat-raised-button color="primary" [disabled]="!selectedFiles"  (click)="uploadFile()">Yüklə</button>
+<!--                    <button mat-raised-button color="primary" [disabled]="!selectedFiles"  (click)="uploadFile()">Yüklə</button>-->
                   </mat-card-subtitle>
                 </mat-card-header>
               </mat-card>

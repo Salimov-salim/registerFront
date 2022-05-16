@@ -6,11 +6,11 @@ export class Person {
   surname?: string;
   fathername?: string;
   militarystate?: boolean;
-  status?: number;
+  status?: boolean;
   insertdate?: Date;
   fin?: string;
   email?: string;
   address?:string;
-  phoneNumber?:string;
+  phonenumber?:string;
   idcv?:Document;
 }
